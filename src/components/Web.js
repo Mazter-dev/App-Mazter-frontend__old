@@ -1,14 +1,17 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Xd from "./Xd";
-import Gallery from "./Gallery";
+import CashRegister from "./CashRegister";
 const Web = () => {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Xd />} />
-        <Route path="/xd" element={<Xd />} />
-        <Route path="/Gallery" element={<Gallery />} />
+        <Route path="/CashRegister" element={<CashRegister />} />
+        <Route path="/Dashboard" element={<CashRegister />} />
+        <Route path="*">
+          404
+        </Route>
       </Routes>
     </div>
   );
