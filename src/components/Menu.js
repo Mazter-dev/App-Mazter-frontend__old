@@ -1,6 +1,6 @@
 import React from "react";
 import Img from "../images/logo.svg";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 const Menu = () => {
   return (
     <div>
