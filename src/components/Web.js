@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import CashRegister from "./CashRegister";
 import Dashboard from "./Dashboard";
+import Mydata from "./MyData";
 import ProductAdd from "./ProductAdd";
 import ProductList from "./ProductList";
 const Web = () => {
@@ -13,6 +14,7 @@ const Web = () => {
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/Add-product" element={<ProductAdd />} />
         <Route path="/List-product" element={<ProductList />} />
+        <Route path="/My-data" element={<Mydata />} />
         {/* <Route path="*">
           404
         </Route> */}
