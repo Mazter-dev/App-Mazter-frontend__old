@@ -14,7 +14,7 @@ const Menu = () => {
             <span>Menú</span>
           </li>
           <ul>
-            <li>
+            <li className="active">
               <Link to="/Dashboard">
                 <i className="fas fa-columns"></i> <span>Dashboard</span>
               </Link>

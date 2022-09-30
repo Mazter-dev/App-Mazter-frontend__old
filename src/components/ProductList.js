@@ -4,29 +4,29 @@ import Master from "./layouts/Master";
 const ProductList = () => {
   return (
     <Master>
-     <div class="page-wrapper">
-			<div class="content container-fluid">
-				<div class="page-header">
-					<div class="row">
-						<div class="col">
-							<h3 class="page-title">Lista de productos</h3>
+     <div className="page-wrapper">
+			<div className="content container-fluid">
+				<div className="page-header">
+					<div className="row">
+						<div className="col">
+							<h3 className="page-title">Lista de productos</h3>
 						</div>
-						<div class="col-auto text-right">
-							<Link class="btn btn-white filter-btn"  id="filter_search">
-								<i class="fas fa-filter"></i>
+						<div className="col-auto text-right">
+							<Link className="btn btn-white filter-btn"  id="filter_search">
+								<i className="fas fa-filter"></i>
 							</Link>
 						</div>
 					</div>
 				</div>
 
-				<div class="card filter-card" id="">
-					<div class="card-body pb-0">
+				<div className="card filter-card" id="">
+					<div className="card-body pb-0">
 						<form action="#">
-							<div class="row filter-row">
-								<div class="col-sm-6 col-md-3">
-									<div class="form-group">
+							<div className="row filter-row">
+								<div className="col-sm-6 col-md-3">
+									<div className="form-group">
 										<label>Provider</label>
-										<select class="form-control select">
+										<select className="form-control select">
 											<option>Select Provider</option>
 											<option>Thomas Herzberg</option>
 											<option>Matthew Garcia</option>
@@ -36,10 +36,10 @@ const ProductList = () => {
 										</select>
 									</div>
 								</div>
-								<div class="col-sm-6 col-md-3">
-									<div class="form-group">
+								<div className="col-sm-6 col-md-3">
+									<div className="form-group">
 										<label>Status</label>
-										<select class="form-control select">
+										<select className="form-control select">
 											<option>Select Status</option>
 											<option>Pending</option>
 											<option>Inprogress</option>
@@ -50,25 +50,25 @@ const ProductList = () => {
 										</select>
 									</div>
 								</div>
-								<div class="col-sm-6 col-md-3">
-									<div class="form-group">
+								<div className="col-sm-6 col-md-3">
+									<div className="form-group">
 										<label>From Date</label>
-										<div class="cal-icon">
-											<input class="form-control datetimepicker" type="text" />
+										<div className="cal-icon">
+											<input className="form-control datetimepicker" type="text" />
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-6 col-md-3">
-									<div class="form-group">
+								<div className="col-sm-6 col-md-3">
+									<div className="form-group">
 										<label>To Date</label>
-										<div class="cal-icon">
-											<input class="form-control datetimepicker" type="text" />
+										<div className="cal-icon">
+											<input className="form-control datetimepicker" type="text" />
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-6 col-md-3">
-									<div class="form-group">
-										<button class="btn btn-primary btn-block" type="submit">Submit</button>
+								<div className="col-sm-6 col-md-3">
+									<div className="form-group">
+										<button className="btn btn-primary btn-block" type="submit">Submit</button>
 									</div>
 								</div>
 							</div>
@@ -76,12 +76,12 @@ const ProductList = () => {
 					</div>
 				</div>
 
-				<div class="row">
-					<div class="col-md-12">
-						<div class="card">
-							<div class="card-body">
-								<div class="table-responsive">
-									<table class="table table-hover table-center mb-0 datatable">
+				<div className="row">
+					<div className="col-md-12">
+						<div className="card">
+							<div className="card-body">
+								<div className="table-responsive">
+									<table className="table table-hover table-center mb-0 datatable">
 										<thead>
 											<tr>
 												<th>#</th>
@@ -98,18 +98,18 @@ const ProductList = () => {
 												<td>1</td>
 												<td>15 Sep 2020</td>
 												<td>
-													<span class="table-avatar">
-														<Link href="#" class="avatar avatar-sm mr-2">
-															<img class="avatar-img rounded-circle" alt=""
+													<span className="table-avatar">
+														<Link href="#" className="avatar avatar-sm mr-2">
+															<img className="avatar-img rounded-circle" alt=""
 																src="assets/img/customer/user-02.jpg" />
 														</Link>
 														<Link >Nancy Olson</Link>
 													</span>
 												</td>
 												<td>
-													<span class="table-avatar">
-														<Link href="#" class="avatar avatar-sm mr-2">
-															<img class="avatar-img rounded-circle" alt=""
+													<span className="table-avatar">
+														<Link href="#" className="avatar avatar-sm mr-2">
+															<img className="avatar-img rounded-circle" alt=""
 																src="assets/img/provider/provider-02.jpg" />
 														</Link>
 														<Link >Matthew Garcia</Link>
@@ -119,13 +119,13 @@ const ProductList = () => {
 												<td>$50</td>
 												<td>
 													<Link href="edit-ratingstype.html"
-														class="table-action-btn btn btn-sm bg-success-light">
-														<i class="far fa-edit mr-1"></i> &nbsp; Edit &nbsp;&nbsp;
+														className="table-action-btn btn btn-sm bg-success-light">
+														<i className="far fa-edit mr-1"></i> &nbsp; Edit &nbsp;&nbsp;
 													</Link>
 													<br/>
 													<Link href="edit-ratingstype.html"
-														class="table-action-btn btn btn-sm bg-danger-light">
-														<i class="far fa-edit mr-1"></i> Delete
+														className="table-action-btn btn btn-sm bg-danger-light">
+														<i className="far fa-edit mr-1"></i> Delete
 													</Link>
 												</td>
 											</tr>
@@ -134,26 +134,26 @@ const ProductList = () => {
 									</table>
 
 								</div>
-								<div class="row mt-5	">
-									<div class="col-sm-12 col-md-4">
-										<div class="" id="" role="status" aria-live="polite">
+								<div className="row mt-5	">
+									<div className="col-sm-12 col-md-4">
+										<div className="" id="" role="status" aria-live="polite">
 											Showing 1 to 10 of 10 entries
 										</div>
 									</div>
-									<div class="col-sm-12 col-md-8">
-										<div class="dataTables_paginate paging_simple_numbers" id="">
-											<ul class="pagination">
-												<li class="paginate_button page-item previous disabled">
-													<Link href="#" class="page-link">Previous</Link>
+									<div className="col-sm-12 col-md-8">
+										<div className="dataTables_paginate paging_simple_numbers" id="">
+											<ul className="pagination">
+												<li className="paginate_button page-item previous disabled">
+													<Link href="#" className="page-link">Previous</Link>
 												</li>
-												<li class="paginate_button page-item active">
-													<Link href="#" class="page-link">1</Link>
+												<li className="paginate_button page-item active">
+													<Link href="#" className="page-link">1</Link>
 												</li>
-												<li class="paginate_button page-item">
-													<Link href="#" class="page-link">2</Link>
+												<li className="paginate_button page-item">
+													<Link href="#" className="page-link">2</Link>
 												</li>
-												<li class="paginate_button page-item next disabled">
-													<Link href="#" class="page-link">Next</Link>
+												<li className="paginate_button page-item next disabled">
+													<Link href="#" className="page-link">Next</Link>
 												</li>
 											</ul>
 										</div>
