@@ -9,7 +9,7 @@ const CashRegister = () => {
           <div className="page-header">
             <div className="row">
               <div className="col">
-                <h3 className="page-title">Agregar producto</h3>
+                <h3 className="page-title">Caja de ventas</h3>
               </div>
             </div>
           </div>
