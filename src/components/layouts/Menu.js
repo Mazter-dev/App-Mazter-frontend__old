@@ -37,7 +37,7 @@ const Menu = () => {
                   <Link to="/Add-product">Agregar</Link>
                 </li>
                 <li>
-                  <Link href="1_product_list.html">Listar</Link>
+                  <Link to="/List-product">Listar</Link>
                 </li>
               </ul>
             </li>
