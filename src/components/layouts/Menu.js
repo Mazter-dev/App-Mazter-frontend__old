@@ -48,15 +48,15 @@ const Menu = () => {
               </Link>
               <ul style={{ display: "block" }}>
                 <li>
-                  <Link href="1_my_acconunt.html">Mis datos</Link>
+                  <Link to="/my-data">Mis datos</Link>
                 </li>
                 <li>
-                  <Link href="1_my_suscription.html">Mi suscripción</Link>
+                  <Link to="/my-suscription">Mi suscripción</Link>
                 </li>
               </ul>
             </li>
             <li>
-              <Link href="1_ticket.html">
+              <Link to="/Help-Desk">
                 <i className="fas fa-exclamation"></i>
                 <span>Mesa de ayuda</span>
               </Link>
