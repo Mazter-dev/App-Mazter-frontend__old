@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Truelysell | Template</title>
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="assets/img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Select2 CSS -->
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <!-- Animate CSS -->
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <a href="index.html" class="logo logo-small">
+                    <img src="assets/img/logo-icon.png" alt="Logo" width="30" height="30">
+                </a>
+            </div>
+            <a class="mobile_btn" id="mobile_btn" href="javascript:void(0);">
+                <i class="fas fa-align-left"></i>
+            </a>
+
+            <ul class="nav user-menu">
+                <!-- Notifications -->
+                <li class="nav-item dropdown noti-dropdown">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        <i class="far fa-bell"></i> <span class="badge badge-pill"></span>
+                    </a>
+                    <!-- Item notifications -->
+                    <!-- <div class="dropdown-menu dropdown-menu-right notifications show" style="margin-left: -312px;">
+						<div class="topnav-dropdown-header">
+							<span class="notification-title">Notifications</span>
+							<a href="javascript:void(0)" class="clear-noti"> Clear All </a>
+						</div>
+						<div class="noti-content">
+							<ul class="notification-list">
+								<li class="notification-message">
+									<a href="admin-notification.html">
+										<div class="media">
+											<span class="avatar avatar-sm">
+												<img class="avatar-img rounded-circle" alt=""
+													src="assets/img/provider/provider-01.jpg">
+											</span>
+											<div class="media-body">
+												<p class="noti-details">
+													<span class="noti-title">Thomas Herzberg have been subscribed</span>
+												</p>
+												<p class="noti-time">
+													<span class="notification-time">15 Sep 2020 10:20 PM</span>
+												</p>
+											</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="topnav-dropdown-footer">
+							<a href="admin-notification.html">View all Notifications</a>
+						</div>
+					</div> -->
+                </li>
+                <!-- /Notifications -->
+
+                <!-- User Menu -->
+                <li class="nav-item dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle user-link  nav-link" data-toggle="dropdown">
+                        <span class="user-img">
+                            <img class="rounded-circle" src="assets/img/user.jpg" width="40" alt="Admin">
+                        </span>
+                    </a>
+                    <!-- <div class="dropdown-menu dropdown-menu-right show" style="margin-left: -122px;">
+						<a class="dropdown-item" href="admin-profile.html">Profile</a>
+						<a class="dropdown-item" href="login.html">Logout</a>
+					</div> -->
+                </li>
+                <!-- /User Menu -->
+
+            </ul>
+        </div>
+        <!-- /Header -->
+
+        <!-- Menu -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <a href="index.html">
+                    <img src="assets/img/logo-icon.png" class="img-fluid" alt="">
+                </a>
+            </div>
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <li class="menu-title">
+                        <span>Menú</span>
+                    </li>
+                    <ul>
+                        <li class="active">
+                            <a href="1_dashboard.html"><i class="fas fa-columns"></i> <span>Dashboard</span></a>
+                        </li>
+                        <li>
+                            <a href="1_caja.html"><i class="fas fa-shopping-cart"></i><span>Caja</span></a>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fas fa-qrcode"></i><span>Productos</span><span
+                                    class="menu-arrow"></span></a>
+                            <ul style="display: none;">
+                                <li><a href="1_product_add.html">Agregar</a></li>
+                                <li><a href="1_product_list.html">Listar</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fas fa-user-plus"></i> <span>Mi cuenta</span> <span
+                                    class="menu-arrow"></span></a>
+                            <ul style="display: none;">
+                                <li><a href="1_my_acconunt.html">Mis datos</a></li>
+                                <li><a href="1_my_suscription.html">Mi suscripción</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="1_ticket.html"><i class="fas fa-exclamation"></i><span>Mesa de ayuda</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-wrapper">
+            <div class="content container-fluid">
+                <!-- Contant -->
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3 class="page-title">Welcome Admin!</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Page Header -->
+
+                <div class="row">
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="dash-widget-header">
+                                    <span class="dash-widget-icon bg-primary">
+                                        <i class="far fa-user"></i>
+                                    </span>
+                                    <div class="dash-widget-info">
+                                        <h3>429</h3>
+                                        <h6 class="text-muted">Productos registrados</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="dash-widget-header">
+                                    <span class="dash-widget-icon bg-primary">
+                                        <i class="fas fa-user-shield"></i>
+                                    </span>
+                                    <div class="dash-widget-info">
+                                        <h3>148</h3>
+                                        <h6 class="text-muted">Ventas de hoy</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="dash-widget-header">
+                                    <span class="dash-widget-icon bg-primary">
+                                        <i class="fas fa-qrcode"></i>
+                                    </span>
+                                    <div class="dash-widget-info">
+                                        <h3>124</h3>
+                                        <h6 class="text-muted">Total ventas hoy</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="dash-widget-header">
+                                    <span class="dash-widget-icon bg-primary">
+                                        <i class="far fa-credit-card"></i>
+                                    </span>
+                                    <div class="dash-widget-info">
+                                        <h3>$11378</h3>
+                                        <h6 class="text-muted">Producto más vendido</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 d-flex">
+
+                        <!-- Recent Bookings -->
+                        <div class="card card-table flex-fill">
+                            <div class="card-header">
+                                <h4 class="card-title">Productos más vendidos</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-center">
+                                        <thead>
+                                            <tr>
+                                                <th>Customer</th>
+                                                <th>Date</th>
+                                                <th>Service</th>
+                                                <th>Status</th>
+                                                <th>Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-nowrap">
+                                                    <img class="avatar-xs rounded-circle"
+                                                        src="assets/img/customer/user-05.jpg" alt="User Image"> Annette
+                                                    Silva
+                                                </td>
+                                                <td class="text-nowrap">9 Sep 2020</td>
+                                                <td>Car Repair Services</td>
+                                                <td>
+                                                    <span class="badge bg-danger inv-badge">Pending</span>
+                                                </td>
+                                                <td>
+                                                    <div class="font-weight-600">$50</div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Recent Bookings -->
+
+                    </div>
+                    <div class="col-md-6 d-flex">
+
+                        <!-- Payments -->
+                        <div class="card card-table flex-fill">
+                            <div class="card-header">
+                                <h4 class="card-title">Productos con pocas unidades</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-center">
+                                        <thead>
+                                            <tr>
+                                                <th>Customer</th>
+                                                <th>Date</th>
+                                                <th>Service</th>
+                                                <th>Status</th>
+                                                <th>Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-nowrap">
+                                                    <img class="avatar-xs rounded-circle"
+                                                        src="assets/img/customer/user-05.jpg" alt="User Image"> Annette
+                                                    Silva
+                                                </td>
+                                                <td class="text-nowrap">9 Sep 2020</td>
+                                                <td>Car Repair Services</td>
+                                                <td>
+                                                    <span class="badge bg-danger inv-badge">Pending</span>
+                                                </td>
+                                                <td>
+                                                    <div class="font-weight-600">$50</div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Payments -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

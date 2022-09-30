@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Truelysell | Template</title>
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="assets/img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Select2 CSS -->
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <!-- Animate CSS -->
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <a href="index.html" class="logo logo-small">
+                    <img src="assets/img/logo-icon.png" alt="Logo" width="30" height="30">
+                </a>
+            </div>
+            <a class="mobile_btn" id="mobile_btn" href="javascript:void(0);">
+                <i class="fas fa-align-left"></i>
+            </a>
+
+            <ul class="nav user-menu">
+                <!-- Notifications -->
+                <li class="nav-item dropdown noti-dropdown">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        <i class="far fa-bell"></i> <span class="badge badge-pill"></span>
+                    </a>
+                    <!-- Item notifications -->
+                    <!-- <div class="dropdown-menu dropdown-menu-right notifications show" style="margin-left: -312px;">
+						<div class="topnav-dropdown-header">
+							<span class="notification-title">Notifications</span>
+							<a href="javascript:void(0)" class="clear-noti"> Clear All </a>
+						</div>
+						<div class="noti-content">
+							<ul class="notification-list">
+								<li class="notification-message">
+									<a href="admin-notification.html">
+										<div class="media">
+											<span class="avatar avatar-sm">
+												<img class="avatar-img rounded-circle" alt=""
+													src="assets/img/provider/provider-01.jpg">
+											</span>
+											<div class="media-body">
+												<p class="noti-details">
+													<span class="noti-title">Thomas Herzberg have been subscribed</span>
+												</p>
+												<p class="noti-time">
+													<span class="notification-time">15 Sep 2020 10:20 PM</span>
+												</p>
+											</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="topnav-dropdown-footer">
+							<a href="admin-notification.html">View all Notifications</a>
+						</div>
+					</div> -->
+                </li>
+                <!-- /Notifications -->
+
+                <!-- User Menu -->
+                <li class="nav-item dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle user-link  nav-link" data-toggle="dropdown">
+                        <span class="user-img">
+                            <img class="rounded-circle" src="assets/img/user.jpg" width="40" alt="Admin">
+                        </span>
+                    </a>
+                    <!-- <div class="dropdown-menu dropdown-menu-right show" style="margin-left: -122px;">
+						<a class="dropdown-item" href="admin-profile.html">Profile</a>
+						<a class="dropdown-item" href="login.html">Logout</a>
+					</div> -->
+                </li>
+                <!-- /User Menu -->
+
+            </ul>
+        </div>
+        <!-- /Header -->
+
+        <!-- Menu -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <a href="index.html">
+                    <img src="assets/img/logo-icon.png" class="img-fluid" alt="">
+                </a>
+            </div>
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <li class="menu-title">
+                        <span>Menú</span>
+                    </li>
+                    <ul>
+						<li class="active">
+							<a href="1_dashboard.html"><i class="fas fa-columns"></i> <span>Dashboard</span></a>
+						</li>
+						<li>
+							<a href="1_caja.html"><i class="fas fa-shopping-cart"></i><span>Caja</span></a>
+						</li>
+						<li class="submenu">
+							<a href="#"><i class="fas fa-qrcode"></i><span>Productos</span><span class="menu-arrow"></span></a>
+							<ul style="display: block;">
+								<li><a href="1_product_add.html">Agregar</a></li>
+								<li><a href="1_product_list.html">Listar</a></li>
+							</ul>
+						</li>
+						<li class="submenu">
+							<a href="#"><i class="fas fa-user-plus"></i> <span>Mi cuenta</span> <span class="menu-arrow"></span></a>
+							<ul style="display: block;">
+								<li><a href="1_my_acconunt.html">Mis datos</a></li>
+								<li><a href="1_my_suscription.html">Mi suscripción</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="1_ticket.html"><i class="fas fa-exclamation"></i><span>Mesa de ayuda</span></a>
+						</li>
+                </div>
+                <div class="align-items-end" style="position: absolute; bottom: 0;">
+                     <P style="font-size: 12px;">© Mazter 2022 - power by <i class="text-primary">NelsonDJCR</i> v 1.0</P>
+                </div>
+            </div>
+        </div>
+        <!-- /Sidebar -->
+
+        <div class="page-wrapper">
+            <div class="content container-fluid">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col">
+                            <h3 class="page-title">Agregar producto</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Page Header -->
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <div class="card">
+                            <div class="card-body">
+
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group row">
+                                            <label class="col-lg-6 col-form-label"> <span class="text-primary">*</span>
+                                                Código / Nombre del producto</label>
+
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-6">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <button class="btn btn-primary"><i class="fas fa-hashtag"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="pull-right">
+                                            <h1 style="font-size: 7em;">$ 15.000</h1> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <ul class="nav nav-tabs menu-tabs">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="wallet.html">Wallet Report</a>
+                                    </li>
+                                    <li class="nav-item ">
+                                        <a class="nav-link">Wallet History</a>
+                                    </li>
+                                    <li class="nav-item ">
+                                        <a class="nav-link">
+                                            <i class="fas fa-plus-square text-primary"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-center mb-0 datatable">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Producto</th>
+                                                <th>Cantidad</th>
+                                                <th>Precio unidad</th>
+                                                <th>Precio final</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>15 Sep 2020</td>
+                                                <td>
+                                                    <span class="table-avatar">
+                                                        <a href="#" class="avatar avatar-sm mr-2">
+                                                            <img class="avatar-img rounded-circle" alt=""
+                                                                src="assets/img/customer/user-02.jpg">
+                                                        </a>
+                                                        <a href="javascript:void(0);">Nancy Olson</a>
+                                                    </span>
+                                                </td>
+                                                <td>Car Repair Services</td>
+                                                <td>$50</td>
+                                                <td class="pull-right px-5">
+                                                    <a href="edit-ratingstype.html"
+                                                        class="table-action-btn btn btn-sm bg-success-light">
+                                                        <i class="far fa-edit mr-1"></i> &nbsp; Edit &nbsp;&nbsp;
+                                                    </a>
+                                                    <br>
+                                                    <a href="edit-ratingstype.html"
+                                                        class="table-action-btn btn btn-sm bg-danger-light">
+                                                        <i class="far fa-edit mr-1"></i> Delete
+                                                    </a>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-12 mt-5">
+                                    <div class="pull-right">
+                                        <button class="btn btn-primary">Finaliza Compra</button>
+                                    </div>
+                                </div>
+                                <div class="row mt-5">
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="" id="" role="status" aria-live="polite">
+                                            Showing 1 to 10 of 10 entries
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+
+</html>

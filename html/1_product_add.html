@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<title>Truelysell | Template</title>
+	<!-- Favicons -->
+	<link rel="shortcut icon" href="assets/img/favicon.png">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+	<!-- Select2 CSS -->
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+	<!-- Animate CSS -->
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="assets/css/admin.css">
+</head>
+
+<body>
+	<div class="main-wrapper">
+
+		<!-- Header -->
+		<div class="header">
+			<div class="header-left">
+				<a href="index.html" class="logo logo-small">
+					<img src="assets/img/logo-icon.png" alt="Logo" width="30" height="30">
+				</a>
+			</div>
+			<a class="mobile_btn" id="mobile_btn" href="javascript:void(0);">
+				<i class="fas fa-align-left"></i>
+			</a>
+
+			<ul class="nav user-menu">
+				<!-- Notifications -->
+				<li class="nav-item dropdown noti-dropdown">
+					<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+						<i class="far fa-bell"></i> <span class="badge badge-pill"></span>
+					</a>
+					<!-- Item notifications -->
+					<!-- <div class="dropdown-menu dropdown-menu-right notifications show" style="margin-left: -312px;">
+						<div class="topnav-dropdown-header">
+							<span class="notification-title">Notifications</span>
+							<a href="javascript:void(0)" class="clear-noti"> Clear All </a>
+						</div>
+						<div class="noti-content">
+							<ul class="notification-list">
+								<li class="notification-message">
+									<a href="admin-notification.html">
+										<div class="media">
+											<span class="avatar avatar-sm">
+												<img class="avatar-img rounded-circle" alt=""
+													src="assets/img/provider/provider-01.jpg">
+											</span>
+											<div class="media-body">
+												<p class="noti-details">
+													<span class="noti-title">Thomas Herzberg have been subscribed</span>
+												</p>
+												<p class="noti-time">
+													<span class="notification-time">15 Sep 2020 10:20 PM</span>
+												</p>
+											</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="topnav-dropdown-footer">
+							<a href="admin-notification.html">View all Notifications</a>
+						</div>
+					</div> -->
+				</li>
+				<!-- /Notifications -->
+
+				<!-- User Menu -->
+				<li class="nav-item dropdown">
+					<a href="javascript:void(0)" class="dropdown-toggle user-link  nav-link" data-toggle="dropdown">
+						<span class="user-img">
+							<img class="rounded-circle" src="assets/img/user.jpg" width="40" alt="Admin">
+						</span>
+					</a>
+					<!-- <div class="dropdown-menu dropdown-menu-right show" style="margin-left: -122px;">
+						<a class="dropdown-item" href="admin-profile.html">Profile</a>
+						<a class="dropdown-item" href="login.html">Logout</a>
+					</div> -->
+				</li>
+				<!-- /User Menu -->
+
+			</ul>
+		</div>
+		<!-- /Header -->
+
+		<!-- Menu -->
+		<div class="sidebar" id="sidebar">
+			<div class="sidebar-logo">
+				<a href="index.html">
+					<img src="assets/img/logo-icon.png" class="img-fluid" alt="">
+				</a>
+			</div>
+			<div class="sidebar-inner slimscroll">
+				<div id="sidebar-menu" class="sidebar-menu">
+					<li class="menu-title">
+						<span>Menú</span>
+					</li>
+					<ul>
+						<li class="active">
+							<a href="1_dashboard.html"><i class="fas fa-columns"></i> <span>Dashboard</span></a>
+						</li>
+						<li>
+							<a href="1_caja.html"><i class="fas fa-shopping-cart"></i><span>Caja</span></a>
+						</li>
+						<li class="submenu">
+							<a href="#"><i class="fas fa-qrcode"></i><span>Productos</span><span class="menu-arrow"></span></a>
+							<ul style="display: block;">
+								<li><a href="1_product_add.html">Agregar</a></li>
+								<li><a href="1_product_list.html">Listar</a></li>
+							</ul>
+						</li>
+						<li class="submenu">
+							<a href="#"><i class="fas fa-user-plus"></i> <span>Mi cuenta</span> <span class="menu-arrow"></span></a>
+							<ul style="display: block;">
+								<li><a href="1_my_acconunt.html">Mis datos</a></li>
+								<li><a href="1_my_suscription.html">Mi suscripción</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="1_ticket.html"><i class="fas fa-exclamation"></i><span>Mesa de ayuda</span></a>
+						</li>
+				</div>
+			</div>
+		</div>
+		<!-- /Sidebar -->
+
+		<div class="page-wrapper">
+			<div class="content container-fluid">
+				<!-- Page Header -->
+				<div class="page-header">
+					<div class="row">
+						<div class="col">
+							<h3 class="page-title">Agregar producto</h3>
+						</div>
+					</div>
+				</div>
+				<!-- /Page Header -->
+
+				<!-- Search Filter -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+
+							<div class="card-body">
+								<h4 class="card-title">Información del producto</h4>
+								<form action="#">
+									<div class="row">
+										<div class="col-xl-6">
+											<div class="form-group row">
+												<label class="col-lg-3 col-form-label"> <span
+														class="text-primary">*</span> Nombre</label>
+												<div class="col-lg-9">
+													<input type="text" class="form-control">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-lg-3 col-form-label"> <span
+														class="text-primary">*</span> Código de barras</label>
+												<div class="col-lg-9">
+													<input type="text" class="form-control">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-lg-3 col-form-label"> <span
+														class="text-primary">*</span> ¿Incluir descuento?</label>
+												<div class="col-lg-9">
+													<div class="form-check form-check-inline">
+														<input class="form-check-input" type="radio" name="gender"
+															id="gender_male" value="option1" checked>
+														<label class="form-check-label" for="gender_male">
+															Aplica
+														</label>
+													</div>
+													<div class="form-check form-check-inline">
+														<input class="form-check-input" type="radio" name="gender"
+															id="gender_female" value="option2">
+														<label class="form-check-label" for="gender_female">
+															No aplica
+														</label>
+													</div>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-lg-3 col-form-label">Descuento</label>
+												<div class="col-lg-9">
+													<input type="text" class="form-control">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-lg-3 col-form-label"> <span
+														class="text-primary">*</span> Categoria</label>
+												<div class="col-lg-9">
+													<select class="form-control">
+														<option>Select</option>
+														<option value="1">A+</option>
+														<option value="2">O+</option>
+														<option value="3">B+</option>
+														<option value="4">AB+</option>
+													</select>
+												</div>
+											</div>
+											<!-- ########## Cuando cambie la categoria cambia la imágen -->
+											<div class="form-group row">
+												<label class="col-lg-3 col-form-label"> <span
+														class="text-primary">*</span> Unidades disonibles</label>
+												<div class="col-lg-9">
+													<input type="text" class="form-control">
+												</div>
+											</div>
+										</div>
+										<div class="col-xl-6">
+											<img src="https://i.pinimg.com/736x/4c/97/10/4c97106bd38a9428c1b112211e2582b5.jpg"
+												style="height: 341px;" alt="">
+										</div>
+									</div>
+
+									<div class="text-right">
+										<button type="submit" class="btn btn-primary">Agregar producto</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+</body>
+
+
+</html>
