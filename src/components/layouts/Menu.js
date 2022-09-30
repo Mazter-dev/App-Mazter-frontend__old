@@ -34,7 +34,7 @@ const Menu = () => {
               {/* style="display: none;" */}
               <ul style={{ display: "block" }}>
                 <li>
-                  <Link href="1_product_add.html">Agregar</Link>
+                  <Link to="/Add-product">Agregar</Link>
                 </li>
                 <li>
                   <Link href="1_product_list.html">Listar</Link>
