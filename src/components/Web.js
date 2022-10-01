@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import Api from "./Api";
 import CashRegister from "./CashRegister";
 import Dashboard from "./Dashboard";
 import MyData from "./MyData";
@@ -17,6 +18,7 @@ const Web = () => {
         <Route path="/List-product" element={<ProductList />} />
         <Route path="/My-data" element={<MyData />} />
         <Route path="/My-suscription" element={<MySuscription />} />
+        <Route path="/api" element={<Api />} />
         {/* <Route path="*">
           404
         </Route> */}
