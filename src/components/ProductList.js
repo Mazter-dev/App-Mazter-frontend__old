@@ -219,7 +219,7 @@ const ProductList = () => {
                             <tr key={count}>
                               <td>{i.id}</td>
                               <td>{i.name}</td>
-                              <td>{i.price}</td>
+                              <td>$ {i.price}</td>
                               <td>{i.stock}</td>
                               <td>{i.sales}</td>
                               <td>{i.state === 1 ? "active" : "inactive"} </td>
