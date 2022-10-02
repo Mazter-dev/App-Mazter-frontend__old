@@ -1,6 +1,18 @@
 import React from "react";
 import Master from "./layouts/Master";
+import { useForm } from "react-hook-form";
+import { IconRequired } from "./layouts/IconRequired";
 const ProductAdd = () => {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
     <Master>
       <div className="page-wrapper">
@@ -17,29 +29,49 @@ const ProductAdd = () => {
               <div className="card">
                 <div className="card-body">
                   <h4 className="card-title">Información del producto</h4>
-                  <form action="#">
+                  <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="row">
                       <div className="col-xl-6">
                         <div className="form-group row">
                           <label className="col-lg-3 col-form-label">
-                            <span className="text-primary">*</span> Nombre
+                            <IconRequired /> Nombre
                           </label>
                           <div className="col-lg-9">
-                            <input type="text" className="form-control" />
+                            <input
+                              type="text"
+                              className="form-control"
+                              {...register("name", {
+                                required: true,
+                                maxLength: 15,
+                              })}
+                            />
+                            <i className="text-primary">
+                              &nbsp;
+                              {errors.name?.type === "required" &&
+                                "El nombre es requerido"}
+                              {errors.name?.type === "maxLength" &&
+                                "El nombre esta muy extenso"}
+                            </i>
                           </div>
                         </div>
                         <div className="form-group row">
                           <label className="col-lg-3 col-form-label">
-                            <span className="text-primary">*</span> Código de barras
+                            <IconRequired /> Código de barras
                           </label>
                           <div className="col-lg-9">
-                            <input type="text" className="form-control" />
+                          <input
+                              type="text"
+                              className="form-control"
+                              {...register("bar_code",{
+                                required:false
+                              })}
+                            />
+                            
                           </div>
                         </div>
                         <div className="form-group row">
                           <label className="col-lg-3 col-form-label">
-                            <span className="text-primary">*</span> ¿Incluir
-                            descuento?
+                            <IconRequired /> ¿Incluir descuento?
                           </label>
                           <div className="col-lg-9">
                             <div className="form-check form-check-inline">
@@ -50,9 +82,7 @@ const ProductAdd = () => {
                                 id="gender_male"
                                 value="option1"
                               />
-                              <label className="form-check-label">
-                                Aplica
-                              </label>
+                              <label className="form-check-label">Aplica</label>
                             </div>
                             <div className="form-check form-check-inline">
                               <input
@@ -62,9 +92,7 @@ const ProductAdd = () => {
                                 id="gender_female"
                                 value="option2"
                               />
-                              <label
-                                className="form-check-label"
-                              >
+                              <label className="form-check-label">
                                 No aplica
                               </label>
                             </div>
@@ -80,22 +108,15 @@ const ProductAdd = () => {
                         </div>
                         <div className="form-group row">
                           <label className="col-lg-3 col-form-label">
-                            <span className="text-primary">*</span> Categoria
+                            <IconRequired /> Costo
                           </label>
                           <div className="col-lg-9">
-                            <select className="form-control">
-                              <option>Select</option>
-                              <option value="1">A+</option>
-                              <option value="2">O+</option>
-                              <option value="3">B+</option>
-                              <option value="4">AB+</option>
-                            </select>
+                            <input type="text" className="form-control" />
                           </div>
                         </div>
                         <div className="form-group row">
                           <label className="col-lg-3 col-form-label">
-                            <span className="text-primary">*</span> Unidades
-                            disonibles
+                            <IconRequired /> Unidades disonibles
                           </label>
                           <div className="col-lg-9">
                             <input type="text" className="form-control" />
