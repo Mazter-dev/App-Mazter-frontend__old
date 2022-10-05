@@ -18,7 +18,9 @@
     "start": "set \"BROWSER=none\" && start firefox localhost:3000 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:pre": "sh -ac '.env.pre.local; react-scripts build'",
+    "build:pro": "sh -ac '.env.pro.local; react-scripts build'"
   },
   "eslintConfig": {
     "extends": [
