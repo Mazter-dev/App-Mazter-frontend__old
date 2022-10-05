@@ -19,8 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:pre": "sh -ac '.env.pre.local; react-scripts build'",
-    "build:pro": "sh -ac '.env.pro.local; react-scripts build'"
+    "build:pre": "sh -ac '.env; react-scripts build'",
+    "build:pro": "sh -ac '.env; react-scripts build'"
   },
   "eslintConfig": {
     "extends": [
