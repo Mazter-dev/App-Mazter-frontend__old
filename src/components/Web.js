@@ -8,6 +8,7 @@ import MySuscription from "./MySuscription";
 import ProductAdd from "./ProductAdd";
 import ProductList from "./ProductList";
 import Error404 from "./errors/Error404";
+import Login from "./test/Login";
 const Web = () => {
   return (
     <div>
@@ -20,6 +21,7 @@ const Web = () => {
         <Route path="/My-data" element={<MyData />} />
         <Route path="/My-suscription" element={<MySuscription />} />
         <Route path="/test-api" element={<Api />} />
+        <Route path="/test-login" element={<Login />} />
 
 
 
