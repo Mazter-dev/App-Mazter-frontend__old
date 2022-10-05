@@ -1,12 +1,13 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Api from "./Api";
+import Api from "./test/Api";
 import CashRegister from "./CashRegister";
 import Dashboard from "./Dashboard";
 import MyData from "./MyData";
 import MySuscription from "./MySuscription";
 import ProductAdd from "./ProductAdd";
 import ProductList from "./ProductList";
+import Error404 from "./errors/Error404";
 const Web = () => {
   return (
     <div>
@@ -18,7 +19,11 @@ const Web = () => {
         <Route path="/List-product" element={<ProductList />} />
         <Route path="/My-data" element={<MyData />} />
         <Route path="/My-suscription" element={<MySuscription />} />
-        <Route path="/api" element={<Api />} />
+        <Route path="/test-api" element={<Api />} />
+
+
+
+        <Route path="*" element={<Error404 />} />
         {/* <Route path="*">
           404
         </Route> */}
