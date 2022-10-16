@@ -4,4 +4,5 @@ export const publicRoutes = {
 export const privateRoutes = {
     APP_HOME:'homeApp',
     SESION:'sesion',
+    DASHBOARD:'dashboard',
 }

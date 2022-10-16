@@ -15,7 +15,7 @@ const Login = () => {
             .then(function (r) {
                 const textForStorage = r.data.token;
                 localStorage.setItem("bearer", textForStorage);
-                navigate("/home");
+                navigate("/");
             })
             .catch(function () {
                 setMsgErrorLogin("Datos incorrectos intente nuevamente");
