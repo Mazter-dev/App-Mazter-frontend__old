@@ -2,11 +2,12 @@
 // import Web from "./components/Web";
 import "./css/App.css";
 import "./css/Xd.css";
+import "./css/admin.css";
 
 import MainRouter from "./routing/MainRouter";
 
 function App() {
-    
+
     var dataSesion = localStorage.getItem("bearer");
     
     

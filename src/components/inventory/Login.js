@@ -16,14 +16,11 @@ const Login = () => {
                 const textForStorage = r.data.token;
                 localStorage.setItem("bearer", textForStorage);
                 navigate("/home");
-                setMsgErrorLogin("Welcome");
             })
             .catch(function () {
                 setMsgErrorLogin("Datos incorrectos intente nuevamente");
-                navigate("/error");
             });
     }
-
     return (
         <div>
             <div className="main-wrapper">
@@ -114,7 +111,6 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-          
         </div>
     );
 };
