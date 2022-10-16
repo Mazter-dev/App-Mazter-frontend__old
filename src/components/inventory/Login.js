@@ -102,12 +102,7 @@ const Login = () => {
 
                                 <div className="social-login">
                                     <span>Login with</span>
-                                    {/* <a className="facebook">
-                                        <i className="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a className="google">
-                                        <i className="fab fa-google"></i>
-                                    </a> */}
+                                 
                                 </div>
 
                                 <div className="text-center dont-have">
@@ -119,23 +114,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-            {/* <form onSubmit={handleSubmit(login)} method="post">
-                <input
-                    type="text"
-                    {...register("email", {
-                        required: true,
-                        maxLength: 100,
-                    })}
-                ></input>
-                <input
-                    type="password"
-                    {...register("password", {
-                        required: true,
-                        maxLength: 100,
-                    })}
-                ></input>
-                <button type="submit">Change</button>
-            </form> */}
+          
         </div>
     );
 };
