@@ -5,7 +5,6 @@ import { Link, useLocation } from "react-router-dom";
 const Menu = () => {
     const prefix = "/app/";
     let location = useLocation();
-    console.log(location.pathname);
     return (
         <div className="sidebar" id="sidebar">
             <div className="sidebar-logo">

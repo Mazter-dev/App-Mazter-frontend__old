@@ -7,7 +7,6 @@ const Api = () => {
         const obtenerPersonajes = async () => {
             const url = "https://rickandmortyapi.com/api/character";
             const result = await axios.get(url);
-            console.log(result.data.results);
             setListActores(result.data.results);
         };
         obtenerPersonajes();
