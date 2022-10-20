@@ -1,3 +1,4 @@
+
 export const publicRoutes = {
     LOGIN:'login',
 }
@@ -8,4 +9,11 @@ export const privateRoutes = {
     CASHREGISTER:'CashRegister',
     PRODUCT_ADD:'add-product',
     PRODUCT_LIST:'list-products',
+}
+
+var dataSesion = localStorage.getItem("bearer");
+
+
+export const helperDataSesion = {
+    TOKEN:dataSesion,
 }

@@ -8,7 +8,6 @@ const LocalStorage = () => {
     localStorage.setItem("my-key", textForStorage);
     // getter
     const textFromStorage = localStorage.getItem("my-key");
-    console.log();
     //delete
     // localStorage.removeItem("my-key");
     // remove all

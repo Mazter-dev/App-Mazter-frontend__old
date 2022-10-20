@@ -4,8 +4,6 @@ import "./css/admin.css";
 import "./css/font-awesome.min.css";
 import "./plugins/fontawesome/css/all.min.css";
 
-import "./js/admin.js";
-
 import MainRouter from "./routing/MainRouter";
 
 function App() {

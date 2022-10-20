@@ -7,18 +7,18 @@ import AuthRoutes from "./AuthRoutes";
 import PrivateRoutes from "./PrivateRoutes";
 import PublicRoutes from "./PublicRoutes";
 const MainRouter = (dataSesion) => {
-    
     const [stateUser] = useState({
         session: dataSesion.dataSesion,
     });
-    const {session} = stateUser;
+    const {valideSesion} = stateUser;
+
 
     return (
         <BrowserRouter>
             <NotFoundComponent>
                 <Route path="/" element={<Home />} />
-                <Route path="/auth/*" element={ <PublicRoutes session={session}  > <AuthRoutes /> </PublicRoutes>} />
-                <Route path="/app/*" element={ <PrivateRoutes session={session}  > <AppRoutes /> </PrivateRoutes>} />
+                <Route path="/auth/*" element={ <PublicRoutes valideSesion={valideSesion}  > <AuthRoutes /> </PublicRoutes>} />
+                <Route path="/app/*" element={ <PrivateRoutes valideSesion={valideSesion}  > <AppRoutes /> </PrivateRoutes>} />
             </NotFoundComponent>
         </BrowserRouter>
     );

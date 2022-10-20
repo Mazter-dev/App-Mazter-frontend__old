@@ -9,18 +9,21 @@ const Login = () => {
     const navigate = useNavigate();
 
     function login(data) {
-        console.log(data);
         axios
             .post(url, data)
             .then(function (r) {
                 const textForStorage = r.data.token;
                 localStorage.setItem("bearer", textForStorage);
-                navigate("/");
+                routeChange()
             })
             .catch(function () {
                 setMsgErrorLogin("Datos incorrectos intente nuevamente");
             });
     }
+    const routeChange = () =>{ 
+        let path = `/app/dashboard`; 
+        navigate(path);
+      }
     return (
         <div>
             <div className="main-wrapper">
