@@ -5,7 +5,7 @@ const Home = () => {
     const navigate = useNavigate();
     function logout() {
         localStorage.removeItem("bearer");
-        navigate("/");
+        navigate("/auth/login");
     }
     const data = localStorage.getItem("bearer");
     return (

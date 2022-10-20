@@ -7,10 +7,9 @@ import "./plugins/fontawesome/css/all.min.css";
 import MainRouter from "./routing/MainRouter";
 
 function App() {
-    var dataSesion = localStorage.getItem("bearer");
     return (
         <div>
-            <MainRouter dataSesion={dataSesion} />
+            <MainRouter />
         </div>
     );
 }
