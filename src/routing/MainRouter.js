@@ -6,7 +6,10 @@ import AppRoutes from "./AppRoutes";
 import AuthRoutes from "./AuthRoutes";
 import PrivateRoutes from "./PrivateRoutes";
 import PublicRoutes from "./PublicRoutes";
+
 const MainRouter = () => {
+    
+
     return (
         <BrowserRouter>
             <NotFoundComponent>
