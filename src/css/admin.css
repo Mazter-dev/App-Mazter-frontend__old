@@ -3363,7 +3363,7 @@ small.help-block {
 }
 
 .checktoggle {
-	background-color: #e0001a;
+	background-color: #F5F5F5;
 	border-radius: 12px;
 	cursor: pointer;
 	display: block;
@@ -3371,7 +3371,7 @@ small.help-block {
 	height: 24px;
 	margin-bottom: 0;
 	position: relative;
-	width: 48px;
+	width: 44px;
 }
 
 .checktoggle:after {
@@ -3389,7 +3389,7 @@ small.help-block {
 }
 
 .check:checked+.checktoggle {
-	background-color: #55ce63;
+	background-color: #FF0080;
 }
 
 .check:checked+.checktoggle:after {
@@ -4514,7 +4514,9 @@ small.help-block {
 .table-inbox .starred.fa-star {
 	color: #ffd200;
 }
-
+.smallText{
+	font-size: 15px;
+}
 .table.table-inbox>tbody>tr>td,
 .table.table-inbox>tbody>tr>th,
 .table.table-inbox>tfoot>tr>td,

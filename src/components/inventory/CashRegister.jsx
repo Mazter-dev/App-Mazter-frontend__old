@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Master from "./layouts/Master";
 import Select from "react-select";
+import { useForm } from "react-hook-form";
 const CashRegister = () => {
     const options = [
         { value: "chocolate", label: "Chocolate" },
@@ -9,12 +10,20 @@ const CashRegister = () => {
         { value: "vanilla", label: "Vanilla" },
     ];
 
-	const [showComponent, setShowComponent] = useState(true);
+    const [showComponent] = useState(true);
+
+    const { register } = useForm();
 
     var total = 0;
 
-    function handleChange() {
-        alert("");
+    const [isSubscribed, setIsSubscribed] = useState(false);
+
+    const handleChange = (event) => {
+        setIsSubscribed((current) => !current);
+    };
+
+    function findProduc() {
+        alert();
     }
 
     // Object.assign(data, {
@@ -28,7 +37,9 @@ const CashRegister = () => {
                     <div className="page-header">
                         <div className="row">
                             <div className="col">
-                                <h3 className="page-title">Caja de ventas</h3>
+                                <h3 className="page-title">
+                                    Caja de ventas st {isSubscribed}
+                                </h3>
                             </div>
                         </div>
                     </div>
@@ -46,23 +57,52 @@ const CashRegister = () => {
                                                     Código / Nombre del producto
                                                 </label>
                                             </div>
+
                                             <div className="form-group row">
-											<div class="form-check form-switch">
-												<input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"/>
-												<label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-											</div>
                                                 <div className="col-lg-6">
-                                                    <Select
-                                                        onChange={handleChange}
-                                                        options={options}
-                                                    />
-                                                    {showComponent ? (
-                                                        <div className="comments_preview_sample">ASDASD</div>
-                                                    ) : null}
+                                                    {isSubscribed ? (
+                                                        <Select
+                                                            onChange={
+                                                                handleChange
+                                                            }
+                                                            options={options}
+                                                        />
+                                                    ) : (
+                                                        <input
+                                                            className="form-control"
+                                                            type="text"
+                                                            onChange={
+                                                                findProduc
+                                                            }
+                                                            {...register(
+                                                                "finProduct",
+                                                                {
+                                                                    required: true,
+                                                                }
+                                                            )}
+                                                        />
+                                                    )}
                                                 </div>
                                                 <button className="btn btn-primary">
                                                     <i className="fas fa-hashtag"></i>
                                                 </button>
+                                            </div>
+                                            <div className="ml-1 form-group row">
+                                                <p className="smallText">
+                                                    Busqueda por nombre&emsp;
+                                                </p>
+                                                <input
+                                                    id="type_search"
+                                                    className="check"
+                                                    type="checkbox"
+                                                    onChange={handleChange}
+                                                />
+                                                <label
+                                                    htmlFor="type_search"
+                                                    className="checktoggle"
+                                                >
+                                                    checkbox
+                                                </label>
                                             </div>
                                         </div>
                                         <div className="col-6">
