@@ -6,6 +6,7 @@ import AppRoutes from "./AppRoutes";
 import AuthRoutes from "./AuthRoutes";
 import PrivateRoutes from "./PrivateRoutes";
 import PublicRoutes from "./PublicRoutes";
+import Lights from "../components/inventory/test/Lights";
 
 const MainRouter = () => {
     
@@ -14,6 +15,7 @@ const MainRouter = () => {
         <BrowserRouter>
             <NotFoundComponent>
                 <Route path="/" element={<Home />} />
+                <Route path="/sw" element={<Lights />} />
                 <Route path="/auth/*" element={ <PublicRoutes> <AuthRoutes /> </PublicRoutes>} />
                 <Route path="/app/*" element={ <PrivateRoutes> <AppRoutes /> </PrivateRoutes>} />
             </NotFoundComponent>
