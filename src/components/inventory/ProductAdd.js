@@ -1,12 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import Master from "./layouts/Master";
 import { useForm } from "react-hook-form";
 import { IconRequired } from "./layouts/IconRequired";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 const ProductAdd = () => {
-    const {register,formState: { errors },handleSubmit} = useForm();
+    const [msgErrorLogin, setMsgErrorLogin] = useState("");
+
+    const {
+        register,
+        formState: { errors },
+        handleSubmit,
+    } = useForm();
+    const navigate = useNavigate();
 
     const onSubmit = (data) => {
+        const user_id = localStorage.getItem("user_id");
+        const url = process.env.REACT_APP_URL_API + "products/save";
+        Object.assign(data, {
+            user_id: user_id,
+        });
+
+        axios
+            .post(url, data)
+            .then(function () {
+                Swal.fire({
+                    title: "Error!",
+                    text: "Do you want to continue",
+                    icon: "success",
+                    confirmButtonText: "Cool",
+                });
+
+                Swal.fire({
+                    title: 'Producto registrado',
+                    text: '¿Desea agregar otro producto?',
+                    icon: 'success',
+                    showCancelButton: true,
+                    confirmButtonText: 'Aceptar',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.value) {
+                        resetForm()
+                    }else{
+                        navigate("/app/list-products");
+                    }
+                });
+            })
+            .catch(function () {
+                setMsgErrorLogin("Datos incorrectos intente nuevamente");
+            });
     };
+
+    function resetForm() {
+        document.getElementById("form-add-product").reset();
+    }
 
     return (
         <Master>
@@ -19,6 +67,7 @@ const ProductAdd = () => {
                             </div>
                         </div>
                     </div>
+                    {msgErrorLogin}
                     <div className="row">
                         <div className="col-md-12">
                             <div className="card">
@@ -26,7 +75,7 @@ const ProductAdd = () => {
                                     <h4 className="card-title">
                                         Información del producto
                                     </h4>
-                                    <form onSubmit={handleSubmit(onSubmit)}>
+                                    <form onSubmit={handleSubmit(onSubmit)} id="form-add-product">
                                         <div className="row">
                                             <div className="col-xl-6">
                                                 <div className="form-group row">
@@ -76,9 +125,10 @@ const ProductAdd = () => {
                                                         />
                                                     </div>
                                                 </div>
-                                                <div className="form-group row">
+                                                {/* Discount */}
+                                                {/* <div className="form-group row">
                                                     <label className="col-lg-3 col-form-label">
-                                                        <IconRequired />{" "}
+                                                        <IconRequired />
                                                         ¿Incluir descuento?
                                                     </label>
                                                     <div className="col-lg-9">
@@ -118,7 +168,7 @@ const ProductAdd = () => {
                                                             className="form-control"
                                                         />
                                                     </div>
-                                                </div>
+                                                </div> */}
                                                 <div className="form-group row">
                                                     <label className="col-lg-3 col-form-label">
                                                         <IconRequired /> Costo
@@ -127,6 +177,12 @@ const ProductAdd = () => {
                                                         <input
                                                             type="text"
                                                             className="form-control"
+                                                            {...register(
+                                                                "price",
+                                                                {
+                                                                    required: true,
+                                                                }
+                                                            )}
                                                         />
                                                     </div>
                                                 </div>
@@ -139,6 +195,12 @@ const ProductAdd = () => {
                                                         <input
                                                             type="text"
                                                             className="form-control"
+                                                            {...register(
+                                                                "stock",
+                                                                {
+                                                                    required: true,
+                                                                }
+                                                            )}
                                                         />
                                                     </div>
                                                 </div>

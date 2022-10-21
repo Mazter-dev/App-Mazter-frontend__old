@@ -9,7 +9,7 @@ const ProductList = () => {
   const [hideFilter, statusHideFilter] = useState(true);
   useEffect(() => {
     const getProducts = async () => {
-      const url = "http://mazter-backend.develop/api/products/get";
+      const url = process.env.REACT_APP_URL_API + "products/get";
       const result = await axios.get(url);
       setListProducts(result.data);
     };

@@ -12,8 +12,9 @@ const Login = () => {
         axios
             .post(url, data)
             .then(function (r) {
-                const textForStorage = r.data.token;
-                localStorage.setItem("bearer", textForStorage);
+                localStorage.setItem("bearer", r.data.token);
+                localStorage.setItem("user_name", r.data.user.comercial_name);
+                localStorage.setItem("user_id", r.data.user.id);
                 routeChange()
             })
             .catch(function () {

@@ -5,6 +5,8 @@ const Home = () => {
     const navigate = useNavigate();
     function logout() {
         localStorage.removeItem("bearer");
+        localStorage.removeItem("user_name");
+        localStorage.removeItem("user_id");
         navigate("/auth/login");
     }
     const data = localStorage.getItem("bearer");
