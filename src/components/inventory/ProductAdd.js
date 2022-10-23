@@ -6,6 +6,8 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 const ProductAdd = () => {
+
+    
     const [msgErrorLogin, setMsgErrorLogin] = useState("");
 
     const {
@@ -21,6 +23,7 @@ const ProductAdd = () => {
         Object.assign(data, {
             user_id: user_id,
         });
+      
 
         axios
             .post(url, data)
@@ -33,16 +36,16 @@ const ProductAdd = () => {
                 });
 
                 Swal.fire({
-                    title: 'Producto registrado',
-                    text: '¿Desea agregar otro producto?',
-                    icon: 'success',
+                    title: "Producto registrado",
+                    text: "¿Desea agregar otro producto?",
+                    icon: "success",
                     showCancelButton: true,
-                    confirmButtonText: 'Aceptar',
-                    cancelButtonText: 'Cancelar'
+                    confirmButtonText: "Aceptar",
+                    cancelButtonText: "Cancelar",
                 }).then((result) => {
                     if (result.value) {
-                        resetForm()
-                    }else{
+                        resetForm();
+                    } else {
                         navigate("/app/list-products");
                     }
                 });
@@ -54,6 +57,7 @@ const ProductAdd = () => {
 
     function resetForm() {
         document.getElementById("form-add-product").reset();
+        document.getElementById("stock").blur()
     }
 
     return (
@@ -75,7 +79,11 @@ const ProductAdd = () => {
                                     <h4 className="card-title">
                                         Información del producto
                                     </h4>
-                                    <form onSubmit={handleSubmit(onSubmit)} id="form-add-product">
+                                    <form
+                                        autoComplete="off"
+                                        onSubmit={handleSubmit(onSubmit)}
+                                        id="form-add-product"
+                                    >
                                         <div className="row">
                                             <div className="col-xl-6">
                                                 <div className="form-group row">
@@ -84,8 +92,11 @@ const ProductAdd = () => {
                                                     </label>
                                                     <div className="col-lg-9">
                                                         <input
+                                                            id="name"
+                                                            autoFocus
                                                             type="text"
                                                             className="form-control"
+                                                            
                                                             {...register(
                                                                 "name",
                                                                 {
@@ -193,6 +204,7 @@ const ProductAdd = () => {
                                                     </label>
                                                     <div className="col-lg-9">
                                                         <input
+                                                            id="stock"
                                                             type="text"
                                                             className="form-control"
                                                             {...register(
