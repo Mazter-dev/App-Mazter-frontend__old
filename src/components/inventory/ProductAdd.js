@@ -118,24 +118,7 @@ const ProductAdd = () => {
                                                         </i>
                                                     </div>
                                                 </div>
-                                                <div className="form-group row">
-                                                    <label className="col-lg-3 col-form-label">
-                                                        <IconRequired /> Código
-                                                        de barras
-                                                    </label>
-                                                    <div className="col-lg-9">
-                                                        <input
-                                                            type="text"
-                                                            className="form-control"
-                                                            {...register(
-                                                                "bar_code",
-                                                                {
-                                                                    required: false,
-                                                                }
-                                                            )}
-                                                        />
-                                                    </div>
-                                                </div>
+                                              
                                                 {/* Discount */}
                                                 {/* <div className="form-group row">
                                                     <label className="col-lg-3 col-form-label">
@@ -216,7 +199,26 @@ const ProductAdd = () => {
                                                         />
                                                     </div>
                                                 </div>
+                                                <div className="form-group row">
+                                                    <label className="col-lg-3 col-form-label">
+                                                        <IconRequired /> Código
+                                                        de barras
+                                                    </label>
+                                                    <div className="col-lg-9">
+                                                        <input
+                                                            type="text"
+                                                            className="form-control"
+                                                            {...register(
+                                                                "bar_code",
+                                                                {
+                                                                    required: false,
+                                                                }
+                                                            )}
+                                                        />
+                                                    </div>
+                                                </div>
                                             </div>
+                                            
                                             <div className="col-xl-6">
                                                 <img
                                                     src="https://i.pinimg.com/736x/4c/97/10/4c97106bd38a9428c1b112211e2582b5.jpg"

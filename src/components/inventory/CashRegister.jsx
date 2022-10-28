@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+/* eslint-disable array-callback-return */
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Master from "./layouts/Master";
 import Select from "react-select";
-import { useForm } from "react-hook-form";
+import $ from "jquery";
+import axios from "axios";
 const CashRegister = () => {
     const options = [
         { value: "chocolate", label: "Chocolate" },
@@ -10,25 +12,87 @@ const CashRegister = () => {
         { value: "vanilla", label: "Vanilla" },
     ];
 
-    const [showComponent] = useState(true);
-
-    const { register } = useForm();
-
-    var total = 0;
+    // const [showComponent] = useState(true);
+    const [table, setTable] = useState({});
+    useEffect(() => {
+        setTable({})
+      }, []);
+    // var total = 0;
 
     const [isSubscribed, setIsSubscribed] = useState(false);
+
+    var [totalCart, setTotalCart] = useState(0);
 
     const handleChange = (event) => {
         setIsSubscribed((current) => !current);
     };
 
-    function findProduc() {
-        alert();
+    const listProducts = [];
+
+    function findProducByBarcode(evt) {
+        var value = evt.target.value;
+        if (value.length >= 12) {
+            const url = process.env.REACT_APP_URL_API + "products/show";
+            const data = { code: $("#inputBarcode").val() };
+            axios
+                .post(url, data)
+                .then(function (r) {
+                    if (listProducts.length <= 0) {
+                        // Add firs item cart
+                        // addCart(r);
+                        setTable({
+                            id: r.data.id,
+                            name: r.data.name,
+                            price: r.data.price,
+                            amount: 1,
+                            totalProduct: r.data.price * 1,
+                        });
+                        console.log(table, "Add firs item cart");
+                    } else {
+                        const name = listProducts.find((product) => {
+                            return product.id === r.data.id;
+                        });
+                        if (typeof name === "undefined") {
+                            // Add new item cart
+                            addCart(r);
+                            console.log(table, "Add new item cart");
+                            setTable(1);
+                        } else {
+                            // If isset item cart cahange amount
+                            listProducts.forEach((element, index) => {
+                                if (element.id === r.data.id) {
+                                    listProducts[index] = {
+                                        id: r.data.id,
+                                        name: r.data.name,
+                                        price: r.data.price,
+                                        amount: element.amount + 1,
+                                        totalProduct:
+                                            r.data.price * (element.amount + 1),
+                                    };
+                                }
+                            });
+                            console.log(listProducts, "change amount");
+                        }
+                    }
+                    $("#inputBarcode").val("");
+                })
+                .catch(function () {});
+
+            $("#inputBarcode").val("");
+            // console.log(table,'table');
+            // console.log(listProducts,'listProducts');
+        }
     }
 
-    // Object.assign(data, {
-    // 	user_id: user_id,
-    // });
+    function addCart(r) {
+        setTable({
+            id: r.data.id,
+            name: r.data.name,
+            price: r.data.price,
+            amount: 1,
+            totalProduct: r.data.price * 1,
+        });
+    }
 
     return (
         <Master>
@@ -62,24 +126,16 @@ const CashRegister = () => {
                                                 <div className="col-lg-6">
                                                     {isSubscribed ? (
                                                         <Select
-                                                            onChange={
-                                                                handleChange
-                                                            }
                                                             options={options}
                                                         />
                                                     ) : (
                                                         <input
                                                             className="form-control"
                                                             type="text"
+                                                            id="inputBarcode"
                                                             onChange={
-                                                                findProduc
+                                                                findProducByBarcode
                                                             }
-                                                            {...register(
-                                                                "finProduct",
-                                                                {
-                                                                    required: true,
-                                                                }
-                                                            )}
                                                         />
                                                     )}
                                                 </div>
@@ -87,6 +143,7 @@ const CashRegister = () => {
                                                     <i className="fas fa-hashtag"></i>
                                                 </button>
                                             </div>
+
                                             <div className="ml-1 form-group row">
                                                 <p className="smallText">
                                                     Busqueda por nombre&emsp;
@@ -108,7 +165,7 @@ const CashRegister = () => {
                                         <div className="col-6">
                                             <div className="pull-right">
                                                 <h1 style={{ fontSize: "7em" }}>
-                                                    $ {total}
+                                                    $ {totalCart}
                                                 </h1>
                                             </div>
                                         </div>
@@ -155,46 +212,58 @@ const CashRegister = () => {
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>15 Sep 2020</td>
-                                                    <td>
-                                                        <span className="table-avatar">
-                                                            <Link
-                                                                href="#"
-                                                                className="avatar avatar-sm mr-2"
-                                                            >
-                                                                <img
-                                                                    className="avatar-img rounded-circle"
-                                                                    alt=""
-                                                                    src="assets/img/customer/user-02.jpg"
-                                                                />
-                                                            </Link>
-                                                            <Link>
-                                                                Nancy Olson
-                                                            </Link>
-                                                        </span>
-                                                    </td>
-                                                    <td>Car Repair Services</td>
-                                                    <td>$50</td>
-                                                    <td className="pull-right px-5">
-                                                        <Link
-                                                            href="edit-ratingstype.html"
-                                                            className="table-action-btn btn btn-sm bg-success-light"
-                                                        >
-                                                            <i className="far fa-edit mr-1"></i>{" "}
-                                                            &nbsp; Edit
-                                                            &nbsp;&nbsp;
-                                                        </Link>
-                                                        <br />
-                                                        <Link
-                                                            href="edit-ratingstype.html"
-                                                            className="table-action-btn btn btn-sm bg-danger-light"
-                                                        >
-                                                            <i className="far fa-edit mr-1"></i>{" "}
-                                                            Delete
-                                                        </Link>
-                                                    </td>
+                                                    {table ? (
+                                                        <th>si</th>
+                                                    ) : (
+                                                        <th>no</th>
+                                                    )}
                                                 </tr>
+
+                                                {/* {table.map((i, index) => (
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>15 Sep 2020</td>
+                                                        <td>
+                                                            <span className="table-avatar">
+                                                                <Link
+                                                                    href="#"
+                                                                    className="avatar avatar-sm mr-2"
+                                                                >
+                                                                    <img
+                                                                        className="avatar-img rounded-circle"
+                                                                        alt=""
+                                                                        src="assets/img/customer/user-02.jpg"
+                                                                    />
+                                                                </Link>
+                                                                <Link>
+                                                                    Nancy Olson
+                                                                </Link>
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            Car Repair Services
+                                                        </td>
+                                                        <td>$50</td>
+                                                        <td className="pull-right px-5">
+                                                            <Link
+                                                                href="edit-ratingstype.html"
+                                                                className="table-action-btn btn btn-sm bg-success-light"
+                                                            >
+                                                                <i className="far fa-edit mr-1"></i>{" "}
+                                                                &nbsp; Edit
+                                                                &nbsp;&nbsp;
+                                                            </Link>
+                                                            <br />
+                                                            <Link
+                                                                href="edit-ratingstype.html"
+                                                                className="table-action-btn btn btn-sm bg-danger-light"
+                                                            >
+                                                                <i className="far fa-edit mr-1"></i>{" "}
+                                                                Delete
+                                                            </Link>
+                                                        </td>
+                                                    </tr>
+                                                ))} */}
                                             </tbody>
                                         </table>
                                     </div>
