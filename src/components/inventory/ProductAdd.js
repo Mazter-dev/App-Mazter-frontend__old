@@ -6,8 +6,6 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 const ProductAdd = () => {
-
-    
     const [msgErrorLogin, setMsgErrorLogin] = useState("");
 
     const {
@@ -23,7 +21,6 @@ const ProductAdd = () => {
         Object.assign(data, {
             user_id: user_id,
         });
-      
 
         axios
             .post(url, data)
@@ -57,7 +54,7 @@ const ProductAdd = () => {
 
     function resetForm() {
         document.getElementById("form-add-product").reset();
-        document.getElementById("stock").blur()
+        document.getElementById("stock").blur();
     }
 
     return (
@@ -96,7 +93,6 @@ const ProductAdd = () => {
                                                             autoFocus
                                                             type="text"
                                                             className="form-control"
-                                                            
                                                             {...register(
                                                                 "name",
                                                                 {
@@ -118,7 +114,7 @@ const ProductAdd = () => {
                                                         </i>
                                                     </div>
                                                 </div>
-                                              
+
                                                 {/* Discount */}
                                                 {/* <div className="form-group row">
                                                     <label className="col-lg-3 col-form-label">
@@ -209,7 +205,7 @@ const ProductAdd = () => {
                                                             type="text"
                                                             className="form-control"
                                                             {...register(
-                                                                "bar_code",
+                                                                "barcode",
                                                                 {
                                                                     required: false,
                                                                 }
@@ -218,7 +214,7 @@ const ProductAdd = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                             <div className="col-xl-6">
                                                 <img
                                                     src="https://i.pinimg.com/736x/4c/97/10/4c97106bd38a9428c1b112211e2582b5.jpg"
