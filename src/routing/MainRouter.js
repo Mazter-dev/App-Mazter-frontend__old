@@ -8,14 +8,28 @@ import PrivateRoutes from "./PrivateRoutes";
 import PublicRoutes from "./PublicRoutes";
 
 const MainRouter = () => {
-    
-
     return (
         <BrowserRouter>
             <NotFoundComponent>
                 <Route path="/" element={<Home />} />
-                <Route path="/auth/*" element={ <PublicRoutes> <AuthRoutes /> </PublicRoutes>} />
-                <Route path="/app/*" element={ <PrivateRoutes> <AppRoutes /> </PrivateRoutes>} />
+                <Route
+                    path="/auth/*"
+                    element={
+                        <PublicRoutes>
+                            {" "}
+                            <AuthRoutes />{" "}
+                        </PublicRoutes>
+                    }
+                />
+                <Route
+                    path="/app/*"
+                    element={
+                        <PrivateRoutes>
+                            {" "}
+                            <AppRoutes />{" "}
+                        </PrivateRoutes>
+                    }
+                />
             </NotFoundComponent>
         </BrowserRouter>
     );
