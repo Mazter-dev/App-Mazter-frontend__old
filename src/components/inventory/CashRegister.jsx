@@ -163,19 +163,13 @@ const CashRegister = () => {
                                                     <li className="nav-item active">
                                                         <div className="nav-link">
                                                             Caja {key + 1}
-                                                            {/* {number.get_list_products.map(
-                                                                (xd, xx) => (
-                                                                    <div
-                                                                        key={xx}
-                                                                    ></div>
-                                                                )
-                                                            )} */}
                                                         </div>
                                                     </li>
                                                     <TableCashRegister
                                                         items={
                                                             number.get_list_products
                                                         }
+                                                        cart={key+1}
                                                     />
                                                 </div>
                                             ))
