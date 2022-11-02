@@ -21,7 +21,7 @@ const Menu = () => {
                         <span>Menú</span>
                     </li>
                     <ul>
-                        <li
+                        {/* <li
                             className={`${
                                 location.pathname ===
                                 prefix + privateRoutes.DASHBOARD
@@ -33,7 +33,7 @@ const Menu = () => {
                                 <i className="fas fa-columns"></i>{" "}
                                 <span>Dashboard</span>
                             </Link>
-                        </li>
+                        </li> */}
                         <li
                             className={`${
                                 location.pathname ===
@@ -85,7 +85,7 @@ const Menu = () => {
                                 </li>
                             </ul>
                         </li>
-                        <li className="submenu">
+                        {/* <li className="submenu">
                             <Link href="#">
                                 <i className="fas fa-user-plus"></i>{" "}
                                 <span>Mi cuenta</span>
@@ -107,7 +107,7 @@ const Menu = () => {
                                 <i className="fas fa-exclamation"></i>
                                 <span>Mesa de ayuda</span>
                             </Link>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
                 <div
