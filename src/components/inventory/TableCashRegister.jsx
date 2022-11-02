@@ -12,7 +12,7 @@ const TableCashRegister = (props) => {
             operator: operator,
         };
         axios
-            .post(url, data)
+            .post(url, data, props.config)
             .then(function (r) {
                 props.setTotal(r.data.total);
                 props.setTabs(r.data.cart);

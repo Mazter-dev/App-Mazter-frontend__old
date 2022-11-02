@@ -12,9 +12,13 @@ const Login = () => {
         axios
             .post(url, data)
             .then(function (r) {
-                localStorage.setItem("bearer", r.data.token);
-                localStorage.setItem("user_name", r.data.user.comercial_name);
-                localStorage.setItem("user_id", r.data.user.id);
+                // localStorage.setItem("bearer", r.data.token);
+                // localStorage.setItem("user_name", r.data.user.comercial_name);
+                // localStorage.setItem("user_id", r.data.user.id);
+                // Session storage
+                sessionStorage.setItem("bearer", r.data.token);
+                sessionStorage.setItem("user_name", r.data.user.comercial_name);
+                sessionStorage.setItem("user_id", r.data.user.id);
                 routeChange()
             })
             .catch(function () {

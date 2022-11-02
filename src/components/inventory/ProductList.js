@@ -1,20 +1,37 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Master from "./layouts/Master";
 const ProductList = () => {
+    const navigate = useNavigate();
     // get products
     const [products, setListProducts] = useState([]);
     const [show, setShow] = useState(false);
     const [hideFilter, statusHideFilter] = useState(true);
     useEffect(() => {
-        const getProducts = async () => {
-            const url = process.env.REACT_APP_URL_API + "products/get";
-            const result = await axios.get(url);
-            setListProducts(result.data);
+        const bearer = localStorage.getItem("bearer");
+        const config = {
+            headers: { Authorization: `Bearer ${bearer}` },
         };
+
+        function getProducts() {
+            const url = process.env.REACT_APP_URL_API + "products/get";
+
+            axios
+                .get(url, config)
+                .then(function (r) {
+                    setListProducts(r.data);
+                })
+                .catch(function (r) {
+                    if (r.response.data.message === "Unauthenticated.") {
+                        sessionStorage.clear()
+                        navigate("/auth/login");
+                    }
+                });
+        }
+
         getProducts();
-    }, []);
+    }, [navigate]);
 
     function toggleFilters() {
         statusHideFilter(false);

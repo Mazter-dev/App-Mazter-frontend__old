@@ -1,6 +1,6 @@
 /* eslint-disable array-callback-return */
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Master from "./layouts/Master";
 import Select from "react-select";
 import $ from "jquery";
@@ -8,55 +8,95 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import TableCashRegister from "./TableCashRegister";
 const CashRegister = () => {
-    const options = [
-        { value: "chocolate", label: "Chocolate" },
-        { value: "strawberry", label: "Strawberry" },
-        { value: "vanilla", label: "Vanilla" },
-    ];
+    const [options, setOptions] = useState({});
+    const [isSubscribed, setIsSubscribed] = useState(false);
+    const [tabs, setTabs] = useState(false);
     const user_id = localStorage.getItem("user_id");
-
     const [total, setTotal] = useState(0);
     const { register, handleSubmit } = useForm();
+    const navigate = useNavigate();
+    const bearer = sessionStorage.getItem("bearer");
+    const config = {
+        headers: { Authorization: `Bearer ${bearer}` },
+    };
     useEffect(() => {
         const url = process.env.REACT_APP_URL_API + "getProductShoppingCart";
         const data = {
             user_id: user_id,
             cart: 1,
         };
+        const bearer = sessionStorage.getItem("bearer");
+        const config = {
+            headers: { Authorization: `Bearer ${bearer}` },
+        };
         axios
-            .post(url, data)
+            .post(url, data, config)
             .then(function (r) {
-                // console.log(r.data.cart);
                 setTabs(r.data.cart);
                 setTotal(r.data.total);
             })
             .catch(function (r) {});
-    }, [user_id]);
-
-    const [isSubscribed, setIsSubscribed] = useState(false);
-    const [tabs, setTabs] = useState(false);
+    }, [user_id, navigate]);
 
     const handleChange = (event) => {
         setIsSubscribed((current) => !current);
+        getListProducts();
     };
 
-    function searchByBarCode() {
+    function getListProducts() {
+        const bearer = sessionStorage.getItem("bearer");
+
+        const config = {
+            headers: { Authorization: `Bearer ${bearer}` },
+        };
         const data = {
-            barcode: $("#inputBarcode").val(),
+            user_id: user_id,
+        };
+        const url =
+            process.env.REACT_APP_URL_API + "products/getProductsSelect";
+        axios
+            .post(url, data, config)
+            .then(function (r) {
+                setOptions(r.data);
+            })
+            .catch(function (r) {
+                if (r.response.data.message === "Unauthenticated.") {
+                    sessionStorage.clear();
+                    navigate("/auth/login");
+                }
+            });
+    }
+
+    function searchByBarCode(value) {
+        var filter =
+            typeof value == "number" ? value : $("#inputBarcode").val();
+        var typeFilter = typeof value == "number" ? "product_id" : "barcode";
+        $("#inputBarcode").val("");
+        const data = {
+            filter: filter,
+            typeFilter: typeFilter,
             user_id: user_id,
             cart: 1,
         };
-        $("#inputBarcode").val("");
+
         const url =
             process.env.REACT_APP_URL_API + "registerProductShoppingCart";
         axios
-            .post(url, data)
+            .post(url, data, config)
             .then(function (r) {
-                // console.log(r.data.cart);
                 setTabs(r.data.cart);
                 setTotal(r.data.total);
             })
-            .catch(function (r) {});
+            .catch(function (r) {
+                if (r.response.data.message === "Unauthenticated.") {
+                    sessionStorage.clear();
+                    navigate("/auth/login");
+                }
+            });
+    }
+
+    function findByWords(product_id) {
+        searchByBarCode(product_id);
     }
 
     return (
@@ -88,6 +128,7 @@ const CashRegister = () => {
                                             </div>
 
                                             <form
+                                                autoComplete="off"
                                                 onSubmit={handleSubmit(
                                                     searchByBarCode
                                                 )}
@@ -96,6 +137,15 @@ const CashRegister = () => {
                                                 <div className="col-lg-6">
                                                     {isSubscribed ? (
                                                         <Select
+                                                            // onChange={findByWords}
+                                                            onChange={(
+                                                                choice
+                                                            ) =>
+                                                                findByWords(
+                                                                    choice.value
+                                                                )
+                                                            }
+                                                            id="selectFind"
                                                             options={options}
                                                         />
                                                     ) : (
@@ -103,13 +153,6 @@ const CashRegister = () => {
                                                             className="form-control"
                                                             type="text"
                                                             id="inputBarcode"
-                                                            {...register(
-                                                                "inputBarcode",
-                                                                {
-                                                                    required: false,
-                                                                    maxLength: 100,
-                                                                }
-                                                            )}
                                                             maxLength="12"
                                                         />
                                                     )}
@@ -165,13 +208,14 @@ const CashRegister = () => {
                                                             Caja {key + 1}
                                                         </div>
                                                     </li>
-                                                    <TableCashRegister 
+                                                    <TableCashRegister
                                                         setTotal={setTotal}
                                                         setTabs={setTabs}
+                                                        config={config}
                                                         items={
                                                             number.get_list_products
                                                         }
-                                                        cart={key+1}
+                                                        cart={key + 1}
                                                     />
                                                 </div>
                                             ))
