@@ -26,7 +26,7 @@ const CashRegister = () => {
         axios
             .post(url, data)
             .then(function (r) {
-                console.log(r.data.cart);
+                // console.log(r.data.cart);
                 setTabs(r.data.cart);
                 setTotal(r.data.total);
             })
@@ -52,7 +52,7 @@ const CashRegister = () => {
         axios
             .post(url, data)
             .then(function (r) {
-                console.log(r.data.cart);
+                // console.log(r.data.cart);
                 setTabs(r.data.cart);
                 setTotal(r.data.total);
             })
@@ -165,7 +165,9 @@ const CashRegister = () => {
                                                             Caja {key + 1}
                                                         </div>
                                                     </li>
-                                                    <TableCashRegister
+                                                    <TableCashRegister 
+                                                        setTotal={setTotal}
+                                                        setTabs={setTabs}
                                                         items={
                                                             number.get_list_products
                                                         }

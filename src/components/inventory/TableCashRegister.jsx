@@ -2,17 +2,21 @@ import axios from "axios";
 import React from "react";
 const TableCashRegister = (props) => {
     const user_id = localStorage.getItem("user_id");
-    function changeAmount(product_id, cart) {
+    function changeAmount(product_id, cart, operator) {
         const url =
             process.env.REACT_APP_URL_API + "changeAmountProductShoppingCart";
         const data = {
             user_id: user_id,
             cart: cart,
-            product_id: product_id
+            product_id: product_id,
+            operator: operator,
         };
         axios
             .post(url, data)
-            .then(function (r) {})
+            .then(function (r) {
+                props.setTotal(r.data.total);
+                props.setTabs(r.data.cart);
+            })
             .catch(function (r) {});
     }
 
@@ -38,7 +42,8 @@ const TableCashRegister = (props) => {
                                     onClick={() =>
                                         changeAmount(
                                             item.product_id,
-                                            props.cart
+                                            props.cart,
+                                            '-'
                                         )
                                     }
                                     className="nav-link"
@@ -50,7 +55,8 @@ const TableCashRegister = (props) => {
                                     onClick={() =>
                                         changeAmount(
                                             item.product_id,
-                                            props.cart
+                                            props.cart,
+                                            '+'
                                         )
                                     }
                                     className="nav-link"
