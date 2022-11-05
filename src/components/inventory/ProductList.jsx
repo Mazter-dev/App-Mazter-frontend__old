@@ -2,22 +2,32 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Master from "./layouts/Master";
+import Swal from "sweetalert2";
+
 const ProductList = () => {
     const navigate = useNavigate();
     const [products, setListProducts] = useState([]);
     const [show, setShow] = useState(false);
     const [hideFilter, statusHideFilter] = useState(true);
+    const user_id = sessionStorage.getItem("user_id");
+    const bearer = sessionStorage.getItem("bearer");
+    const config = {
+        headers: { Authorization: `Bearer ${bearer}` },
+    };
+
     useEffect(() => {
-        const bearer = localStorage.getItem("bearer");
+        const bearer = sessionStorage.getItem("bearer");
         const config = {
             headers: { Authorization: `Bearer ${bearer}` },
         };
 
         function getProducts() {
             const url = process.env.REACT_APP_URL_API + "products/get";
-
+            const data = {
+                user_id: user_id,
+            };
             axios
-                .get(url, config)
+                .post(url, data, config)
                 .then(function (r) {
                     setListProducts(r.data);
                 })
@@ -35,6 +45,39 @@ const ProductList = () => {
     function toggleFilters() {
         statusHideFilter(false);
         setShow(!show);
+    }
+
+    function deleteRegister(product_id) {
+        Swal.fire({
+            title: "Eliminar registro",
+            text: "",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#FF0080",
+            cancelButtonColor: "#bebebe",
+            confirmButtonText: "Eliminar",
+            cancelButtonText: "cancelar",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const url = process.env.REACT_APP_URL_API + "products/delete";
+                const data = {
+                    user_id: user_id,
+                    product_id: product_id,
+                };
+                axios
+                    .post(url, data, config)
+                    .then(function (r) {
+                        setListProducts(r.data);
+                        Swal.fire("Eliminado!", "", "success");
+                    })
+                    .catch(function (r) {
+                        if (r.response.data.message === "Unauthenticated.") {
+                            sessionStorage.clear();
+                            navigate("/auth/login");
+                        }
+                    });
+            }
+        });
     }
 
     return (
@@ -239,7 +282,9 @@ const ProductList = () => {
                                                 {products.map((i, count) => {
                                                     return (
                                                         <tr key={count}>
-                                                            <td>{i.id}</td>
+                                                            <td>
+                                                                {i.product_id}
+                                                            </td>
                                                             <td>{i.name}</td>
                                                             <td>$ {i.price}</td>
                                                             <td>{i.stock}</td>
@@ -247,7 +292,7 @@ const ProductList = () => {
                                                             <td>
                                                                 {i.state === 1
                                                                     ? "active"
-                                                                    : "inactive"}{" "}
+                                                                    : "inactive"}
                                                             </td>
 
                                                             <td>
@@ -255,16 +300,21 @@ const ProductList = () => {
                                                                     href="edit-ratingstype.html"
                                                                     className="table-action-btn btn btn-sm bg-success-light"
                                                                 >
-                                                                    <i className="far fa-edit mr-1"></i>{" "}
+                                                                    <i className="far fa-edit mr-1"></i>
                                                                     &nbsp; Edit
                                                                     &nbsp;&nbsp;
                                                                 </Link>
                                                                 <br />
                                                                 <Link
+                                                                    onClick={() => {
+                                                                        deleteRegister(
+                                                                            i.product_id
+                                                                        );
+                                                                    }}
                                                                     href="edit-ratingstype.html"
                                                                     className="table-action-btn btn btn-sm bg-danger-light"
                                                                 >
-                                                                    <i className="far fa-edit mr-1"></i>{" "}
+                                                                    <i className="far fa-edit mr-1"></i>
                                                                     Delete
                                                                 </Link>
                                                             </td>
@@ -332,10 +382,7 @@ const ProductList = () => {
                         </div>
                     </div>
                 </div>
-                
             </div>
-
-            
         </Master>
     );
 };

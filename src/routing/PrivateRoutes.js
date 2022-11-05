@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { publicRoutes } from "../helpers/routes";
 
 const PrivateRoutes = ({ children, aaaaaaaaaaaaa }) => {
-    return localStorage.getItem("bearer") ? (
+    return sessionStorage.getItem("bearer") ? (
         children
     ) : (
         <Navigate replace to={`/auth/${publicRoutes.LOGIN}`} />

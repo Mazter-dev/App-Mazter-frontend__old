@@ -154,12 +154,10 @@ const CashRegister = () => {
                                                             type="text"
                                                             id="inputBarcode"
                                                             maxLength="12"
+                                                            autoFocus
                                                         />
                                                     )}
                                                 </div>
-                                                <button className="btn btn-primary">
-                                                    <i className="fas fa-hashtag"></i>
-                                                </button>
                                             </form>
 
                                             <div className="ml-1 form-group row">
@@ -171,6 +169,7 @@ const CashRegister = () => {
                                                     className="check"
                                                     type="checkbox"
                                                     onChange={handleChange}
+                                                    
                                                 />
                                                 <label
                                                     htmlFor="type_search"

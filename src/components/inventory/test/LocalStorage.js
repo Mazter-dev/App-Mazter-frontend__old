@@ -23,15 +23,18 @@ const LocalStorage = () => {
     sessionStorage.clear();
 
 
-
+    const user_id = sessionStorage.getItem("user_id");
     const navigate = useNavigate();
     const bearer = sessionStorage.getItem("bearer");
     const config = {
         headers: { Authorization: `Bearer ${bearer}` },
     };
     const url = process.env.REACT_APP_URL_API + "products/get";
+    const data = {
+        user_id: user_id,
+    };
     axios
-        .get(url, config)
+        .get(url, data,config)
         .then(function (r) {
         })
         .catch(function (r) {

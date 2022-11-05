@@ -2,6 +2,7 @@ import React from "react";
 import { privateRoutes } from "../../../helpers/routes";
 import { Link, useLocation } from "react-router-dom";
 const Menu = () => {
+    
     const prefix = "/app/";
     let location = useLocation();
     return (
