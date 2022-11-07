@@ -145,6 +145,7 @@ import $ from 'jquery';
 	// Small Sidebar
 
 	$(document).on('click', '#toggle_btn', function() {
+		alert()
 		if($('body').hasClass('mini-sidebar')) {
 			$('body').removeClass('mini-sidebar');
 			$('.subdrop + ul').slideDown();
@@ -152,10 +153,10 @@ import $ from 'jquery';
 			$('body').addClass('mini-sidebar');
 			$('.subdrop + ul').slideUp();
 		}
-		setTimeout(function(){ 
-			mA.redraw();
-			mL.redraw();
-		}, 300);
+		// setTimeout(function(){ 
+		// 	mA.redraw();
+		// 	mL.redraw();
+		// }, 300);
 		return false;
 	});
 	

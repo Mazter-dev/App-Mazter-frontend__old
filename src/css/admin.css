@@ -2709,11 +2709,9 @@ html.menu-opened body {
 
 .header.fixed-header {
 	margin: 0;
-	right: 0;
 	border-radius: 0;
 	transition: all 0.45s ease 0s;
 	top: 0;
-	left: 280px;
 	background-color: #ff0080;
 }
 
@@ -4998,9 +4996,9 @@ table.table-inbox tbody tr.checked {
 	.main-wrapper>.header {
 		left: 50px;
 	}
-	/* .main-wrapper>.header.fixed-header {
-		left: 0;
-	} */
+	.main-wrapper>.header.fixed-header {
+		top: 0;
+	}
 	.main-wrapper {
 		padding: 20px;
 	}

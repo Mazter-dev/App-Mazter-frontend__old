@@ -1,8 +1,23 @@
 import React from "react";
 import Menu from "./Menu";
 import { Link } from "react-router-dom";
+import $ from 'jquery'
 // import CashRegister from "../product/CashRegister";
 const Master = (props) => {
+    function showMenu() {
+        var $wrapper = $('.main-wrapper');
+        $wrapper.toggleClass('slide-nav');
+        $('.sidebar-overlay').toggleClass('opened');
+        $('html').addClass('menu-opened');
+    }
+    $(".page-wrapper,.header").on("click", function () {
+        if ($('.slide-nav') !== null) {
+            var $wrapper = $('.main-wrapper');
+            $wrapper.removeClass('slide-nav');
+            $(".sidebar-overlay").removeClass("opened");
+            $('html').removeClass('menu-opened');
+        }
+	});	
     return (
         <div className="main-wrapper">
             <div className="header">
@@ -16,7 +31,7 @@ const Master = (props) => {
                         />
                     </Link>
                 </div>
-                <Link className="mobile_btn" id="mobile_btn">
+                <Link className="mobile_btn" onClick={showMenu} id="mobile_btn">
                     <i className="fas fa-align-left"></i>
                 </Link>
                 <ul className="nav user-menu">

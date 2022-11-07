@@ -2,12 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Master from "./layouts/Master";
+import $ from 'jquery'
 
 const Dashboard = () => {
     const navigate = useNavigate();
     const [userName, setUserName] = useState('...');
-
+    
     useEffect(() => {
+        
         function getUser() {
             const config = {
                 headers: { Authorization: `Bearer ${sessionStorage.getItem("bearer")}` },
