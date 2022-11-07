@@ -4998,9 +4998,9 @@ table.table-inbox tbody tr.checked {
 	.main-wrapper>.header {
 		left: 50px;
 	}
-	.main-wrapper>.header.fixed-header {
+	/* .main-wrapper>.header.fixed-header {
 		left: 0;
-	}
+	} */
 	.main-wrapper {
 		padding: 20px;
 	}
