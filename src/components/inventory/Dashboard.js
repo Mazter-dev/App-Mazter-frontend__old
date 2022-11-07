@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { configApi, urlApi } from "../../helpers/helper";
+import { configApi, ip, urlApi } from "../../helpers/helper";
 import Master from "./layouts/Master";
 
 const Dashboard = () => {
@@ -32,7 +32,7 @@ const Dashboard = () => {
                         <div className="row">
                             <div className="col-12">
                                 <h3 className="page-title">
-                                    Bienvenido {userName}!
+                                    Bienvenido {userName}! {ip()}
                                 </h3>
                             </div>
                         </div>

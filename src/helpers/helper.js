@@ -1,11 +1,12 @@
+import $ from "jquery";
 export function getBearer() {
     return sessionStorage.getItem("bearer");
 }
 export function urlApi(url) {
-    return  process.env.REACT_APP_URL_API + url;
+    return process.env.REACT_APP_URL_API + url;
 }
 export function configApi() {
-    var config = {}
+    var config = {};
     if (sessionStorage.getItem("bearer")) {
         config = {
             headers: {
@@ -13,7 +14,7 @@ export function configApi() {
                 "Access-Control-Allow-Origin": "*",
             },
         };
-    }else{
+    } else {
         config = {
             headers: {
                 "Access-Control-Allow-Origin": "*",
@@ -23,5 +24,9 @@ export function configApi() {
     return config;
 }
 export function ip() {
-    return  process.env.REACT_APP_URL_API ;
+    $.getJSON("https://api.ipify.org?format=json", function (data) {
+        // Setting text of element P with id gfg
+        console.log(data);
+    });
+    // return "1";
 }
