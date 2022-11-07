@@ -40,7 +40,7 @@ const ProductList = () => {
         }
 
         getProducts();
-    }, [navigate]);
+    }, [navigate,user_id]);
 
     function toggleFilters() {
         statusHideFilter(false);
