@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Master from "./layouts/Master";
-import $ from 'jquery'
 
 const Dashboard = () => {
     const navigate = useNavigate();
