@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Master from "./layouts/Master";
 import { useForm } from "react-hook-form";
 import { IconRequired } from "./layouts/IconRequired";
@@ -6,8 +6,9 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 const ProductAdd = () => {
-    const [msgErrorLogin, setMsgErrorLogin] = useState("");
-
+    const config = {
+        headers: { Authorization: `Bearer ${sessionStorage.getItem("bearer")}` },
+    };
     const {
         register,
         formState: { errors },
@@ -16,21 +17,10 @@ const ProductAdd = () => {
     const navigate = useNavigate();
 
     const onSubmit = (data) => {
-        const user_id = localStorage.getItem("user_id");
         const url = process.env.REACT_APP_URL_API + "products/save";
-        Object.assign(data, {
-            user_id: user_id,
-        });
-
         axios
-            .post(url, data)
+            .post(url, data, config,)
             .then(function () {
-                Swal.fire({
-                    title: "Error!",
-                    text: "Do you want to continue",
-                    icon: "success",
-                    confirmButtonText: "Cool",
-                });
 
                 Swal.fire({
                     title: "Producto registrado",
@@ -48,7 +38,8 @@ const ProductAdd = () => {
                 });
             })
             .catch(function () {
-                setMsgErrorLogin("Datos incorrectos intente nuevamente");
+                sessionStorage.clear();
+                navigate("/auth/login");
             });
     };
 
@@ -68,7 +59,6 @@ const ProductAdd = () => {
                             </div>
                         </div>
                     </div>
-                    {msgErrorLogin}
                     <div className="row">
                         <div className="col-md-12">
                             <div className="card">

@@ -11,7 +11,6 @@ const CashRegister = () => {
     const [options, setOptions] = useState({});
     const [isSubscribed, setIsSubscribed] = useState(false);
     const [tabs, setTabs] = useState(false);
-    const user_id = localStorage.getItem("user_id");
     const [total, setTotal] = useState(0);
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate();
@@ -22,12 +21,10 @@ const CashRegister = () => {
     useEffect(() => {
         const url = process.env.REACT_APP_URL_API + "getProductShoppingCart";
         const data = {
-            user_id: user_id,
             cart: 1,
         };
-        const bearer = sessionStorage.getItem("bearer");
         const config = {
-            headers: { Authorization: `Bearer ${bearer}` },
+            headers: { Authorization: `Bearer ${sessionStorage.getItem("bearer")}` },
         };
         axios
             .post(url, data, config)
@@ -35,8 +32,11 @@ const CashRegister = () => {
                 setTabs(r.data.cart);
                 setTotal(r.data.total);
             })
-            .catch(function (r) {});
-    }, [user_id, navigate]);
+            .catch(function () {
+                sessionStorage.clear();
+                navigate("/auth/login");
+            });
+    }, [navigate]);
 
     const handleChange = (event) => {
         setIsSubscribed((current) => !current);
@@ -44,26 +44,19 @@ const CashRegister = () => {
     };
 
     function getListProducts() {
-        const bearer = sessionStorage.getItem("bearer");
-
         const config = {
-            headers: { Authorization: `Bearer ${bearer}` },
-        };
-        const data = {
-            user_id: user_id,
+            headers: { Authorization: `Bearer ${sessionStorage.getItem("bearer")}` },
         };
         const url =
             process.env.REACT_APP_URL_API + "products/getProductsSelect";
         axios
-            .post(url, data, config)
+            .get(url, config)
             .then(function (r) {
                 setOptions(r.data);
             })
-            .catch(function (r) {
-                if (r.response.data.message === "Unauthenticated.") {
-                    sessionStorage.clear();
-                    navigate("/auth/login");
-                }
+            .catch(function () {
+                sessionStorage.clear();
+                navigate("/auth/login");
             });
     }
 
@@ -75,7 +68,6 @@ const CashRegister = () => {
         const data = {
             filter: filter,
             typeFilter: typeFilter,
-            user_id: user_id,
             cart: 1,
         };
 
@@ -87,11 +79,9 @@ const CashRegister = () => {
                 setTabs(r.data.cart);
                 setTotal(r.data.total);
             })
-            .catch(function (r) {
-                if (r.response.data.message === "Unauthenticated.") {
-                    sessionStorage.clear();
-                    navigate("/auth/login");
-                }
+            .catch(function () {
+                // sessionStorage.clear();
+                // navigate("/auth/login");
             });
     }
 
@@ -107,7 +97,7 @@ const CashRegister = () => {
                         <div className="row">
                             <div className="col">
                                 <h3 className="page-title">
-                                    Caja de ventas st {isSubscribed}
+                                    Caja de ventas st {isSubscribed} {register}
                                 </h3>
                             </div>
                         </div>

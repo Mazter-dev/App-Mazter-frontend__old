@@ -9,7 +9,6 @@ const ProductList = () => {
     const [products, setListProducts] = useState([]);
     const [show, setShow] = useState(false);
     const [hideFilter, statusHideFilter] = useState(true);
-    const user_id = sessionStorage.getItem("user_id");
     const bearer = sessionStorage.getItem("bearer");
     const config = {
         headers: { Authorization: `Bearer ${bearer}` },
@@ -35,7 +34,7 @@ const ProductList = () => {
         }
 
         getProducts();
-    }, [navigate, user_id]);
+    }, [navigate]);
 
     function toggleFilters() {
         statusHideFilter(false);
@@ -56,7 +55,6 @@ const ProductList = () => {
             if (result.isConfirmed) {
                 const url = process.env.REACT_APP_URL_API + "products/delete";
                 const data = {
-                    user_id: user_id,
                     product_id: product_id,
                 };
                 axios
