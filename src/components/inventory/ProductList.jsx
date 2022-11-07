@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Master from "./layouts/Master";
 import Swal from "sweetalert2";
 import { ModalProductUpdate } from "./modals/ModalProductUpdate";
+import { configApi, urlApi } from "../../helpers/helper";
 
 const ProductList = () => {
     const navigate = useNavigate();
@@ -23,16 +24,9 @@ const ProductList = () => {
     };
 
     useEffect(() => {
-        const config = {
-            headers: {
-                Authorization: `Bearer ${sessionStorage.getItem("bearer")}`,
-            },
-        };
-
         function getProducts() {
-            const url = process.env.REACT_APP_URL_API + "products/get";
             axios
-                .get(url, config)
+                .get(urlApi('products/get'), configApi())
                 .then(function (r) {
                     setListProducts(r.data);
                 })
@@ -41,7 +35,6 @@ const ProductList = () => {
                     navigate("/auth/login");
                 });
         }
-
         getProducts();
     }, [navigate]);
 
@@ -62,12 +55,11 @@ const ProductList = () => {
             cancelButtonText: "cancelar",
         }).then((result) => {
             if (result.isConfirmed) {
-                const url = process.env.REACT_APP_URL_API + "products/delete";
                 const data = {
                     product_id: product_id,
                 };
                 axios
-                    .post(url, data, config)
+                    .post(urlApi('products/delete'), data, configApi())
                     .then(function (r) {
                         setListProducts(r.data);
                         Swal.fire("Eliminado!", "", "success");

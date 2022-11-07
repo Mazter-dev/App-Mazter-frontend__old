@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { configApi, urlApi } from "../../helpers/helper";
 import Master from "./layouts/Master";
 
 const Dashboard = () => {
@@ -10,12 +11,8 @@ const Dashboard = () => {
     useEffect(() => {
         
         function getUser() {
-            const config = {
-                headers: { Authorization: `Bearer ${sessionStorage.getItem("bearer")}` },
-            };
-            const url = process.env.REACT_APP_URL_API + "getUser";
             axios
-                .get(url,config)
+                .get(urlApi('getUser'),configApi())
                 .then(function (r) {
                     setUserName(r.data.comercial_name)
                 })

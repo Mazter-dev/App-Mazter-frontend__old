@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { configApi, urlApi } from "../../../helpers/helper";
 
 const LocalStorage = () => {
     // Create variable from local storage
@@ -19,17 +20,9 @@ const LocalStorage = () => {
     sessionStorage.getItem("myKey");
     sessionStorage.removeItem("myKey");
     sessionStorage.clear();
-
     const navigate = useNavigate();
-    const config = {
-        headers: {
-            Authorization: `Bearer ${sessionStorage.getItem("bearer")}`,
-            "Access-Control-Allow-Origin": "*" ,
-        },
-    };
-    const url = process.env.REACT_APP_URL_API + "products/get";
     axios
-        .get(url, config)
+        .get(urlApi('products/get'), configApi())
         .then(function (r) {})
         .catch(function () {
             sessionStorage.clear();

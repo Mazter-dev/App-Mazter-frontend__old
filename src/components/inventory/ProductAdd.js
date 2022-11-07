@@ -6,12 +6,8 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { InputRequired } from "./layouts/InputRequired";
+import { configApi, urlApi } from "../../helpers/helper";
 const ProductAdd = () => {
-    const config = {
-        headers: {
-            Authorization: `Bearer ${sessionStorage.getItem("bearer")}`,
-        },
-    };
     const {
         register,
         formState: { errors },
@@ -20,9 +16,8 @@ const ProductAdd = () => {
     const navigate = useNavigate();
 
     const onSubmit = (data) => {
-        const url = process.env.REACT_APP_URL_API + "products/save";
         axios
-            .post(url, data, config)
+            .post(urlApi('products/save'), data, configApi())
             .then(function () {
                 Swal.fire({
                     title: "Producto registrado",

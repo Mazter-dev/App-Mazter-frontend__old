@@ -7,6 +7,7 @@ import $ from "jquery";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import TableCashRegister from "./TableCashRegister";
+import { configApi, getBearer, urlApi } from "../../helpers/helper";
 const CashRegister = () => {
     const [options, setOptions] = useState({});
     const [isSubscribed, setIsSubscribed] = useState(false);
@@ -17,8 +18,8 @@ const CashRegister = () => {
     const config = {
         headers: { Authorization: `Bearer ${sessionStorage.getItem("bearer")}` },
     };
+    // console.log(getBearer());
     useEffect(() => {
-        const url = process.env.REACT_APP_URL_API + "getProductShoppingCart";
         const data = {
             cart: 1,
         };
@@ -26,7 +27,7 @@ const CashRegister = () => {
             headers: { Authorization: `Bearer ${sessionStorage.getItem("bearer")}` },
         };
         axios
-            .post(url, data, config)
+            .post(urlApi('getProductShoppingCart'), data, config)
             .then(function (r) {
                 setTabs(r.data.cart);
                 setTotal(r.data.total);
@@ -43,13 +44,8 @@ const CashRegister = () => {
     };
 
     function getListProducts() {
-        const config = {
-            headers: { Authorization: `Bearer ${sessionStorage.getItem("bearer")}` },
-        };
-        const url =
-            process.env.REACT_APP_URL_API + "products/getProductsSelect";
         axios
-            .get(url, config)
+            .get(urlApi('products/getProductsSelect'), configApi())
             .then(function (r) {
                 setOptions(r.data);
             })
@@ -70,10 +66,8 @@ const CashRegister = () => {
             cart: 1,
         };
 
-        const url =
-            process.env.REACT_APP_URL_API + "registerProductShoppingCart";
         axios
-            .post(url, data, config)
+            .post(urlApi('products/getProductsSelect'), data, configApi())
             .then(function (r) {
                 setTabs(r.data.cart);
                 setTotal(r.data.total);

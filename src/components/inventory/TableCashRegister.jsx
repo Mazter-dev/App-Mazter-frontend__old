@@ -1,16 +1,16 @@
 import axios from "axios";
 import React from "react";
+import { configApi, urlApi } from "../../helpers/helper";
 const TableCashRegister = (props) => {
     function changeAmount(product_id, cart, operator) {
-        const url =
-            process.env.REACT_APP_URL_API + "changeAmountProductShoppingCart";
+        
         const data = {
             cart: cart,
             product_id: product_id,
             operator: operator,
         };
         axios
-            .post(url, data, props.config)
+            .post(urlApi("changeAmountProductShoppingCart"), data, configApi())
             .then(function (r) {
                 props.setTotal(r.data.total);
                 props.setTabs(r.data.cart);

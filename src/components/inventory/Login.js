@@ -2,17 +2,17 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { configApi, urlApi } from "../../helpers/helper";
 const Login = () => {
-    const url = process.env.REACT_APP_URL_API + "login";
     const { register, handleSubmit } = useForm();
     const [msgErrorLogin, setMsgErrorLogin] = useState("");
     const navigate = useNavigate();
-    const config = {
-        headers: { "Access-Control-Allow-Origin": "*" },
-    };
+    // const config = {
+    //     headers: { "Access-Control-Allow-Origin": "*" },
+    // };
     function login(data) {
         axios
-            .post(url, data, config)
+            .post(urlApi('login'), data, configApi())
             .then(function (r) {
                 sessionStorage.setItem("bearer", r.data.token);
                 routeChange();
@@ -45,7 +45,6 @@ const Login = () => {
                                 </div>
                                 <div className="login-header">
                                     <h3>
-                                        {process.env.REACT_APP_URL_API}
                                         Login <span>Truelysell</span>
                                     </h3>
                                     <p className="text-muted">
