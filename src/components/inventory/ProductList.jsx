@@ -9,15 +9,13 @@ const ProductList = () => {
     const [products, setListProducts] = useState([]);
     const [show, setShow] = useState(false);
     const [hideFilter, statusHideFilter] = useState(true);
-    const bearer = sessionStorage.getItem("bearer");
     const config = {
-        headers: { Authorization: `Bearer ${bearer}` },
+        headers: { Authorization: `Bearer ${sessionStorage.getItem("bearer")}` },
     };
 
     useEffect(() => {
-        const bearer = sessionStorage.getItem("bearer");
         const config = {
-            headers: { Authorization: `Bearer ${bearer}` },
+            headers: { Authorization: `Bearer ${sessionStorage.getItem("bearer")}` },
         };
 
         function getProducts() {

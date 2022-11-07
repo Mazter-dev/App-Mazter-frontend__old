@@ -14,9 +14,8 @@ const CashRegister = () => {
     const [total, setTotal] = useState(0);
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate();
-    const bearer = sessionStorage.getItem("bearer");
     const config = {
-        headers: { Authorization: `Bearer ${bearer}` },
+        headers: { Authorization: `Bearer ${sessionStorage.getItem("bearer")}` },
     };
     useEffect(() => {
         const url = process.env.REACT_APP_URL_API + "getProductShoppingCart";

@@ -9,9 +9,8 @@ const Dashboard = () => {
 
     useEffect(() => {
         function getUser() {
-            const bearer = sessionStorage.getItem("bearer");
             const config = {
-                headers: { Authorization: `Bearer ${bearer}` },
+                headers: { Authorization: `Bearer ${sessionStorage.getItem("bearer")}` },
             };
             const url = process.env.REACT_APP_URL_API + "getUser";
             axios
