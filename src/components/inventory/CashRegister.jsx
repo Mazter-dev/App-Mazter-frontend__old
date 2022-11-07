@@ -106,7 +106,7 @@ const CashRegister = () => {
                             <div className="card">
                                 <div className="card-body">
                                     <div className="row">
-                                        <div className="col-6">
+                                        <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                             <div className="form-group row">
                                                 <label className="col-lg-6 col-form-label">
                                                     <span className="text-primary">
@@ -168,9 +168,9 @@ const CashRegister = () => {
                                                 </label>
                                             </div>
                                         </div>
-                                        <div className="col-6">
-                                            <div className="pull-right">
-                                                <h1 style={{ fontSize: "7em" }}>
+                                        <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                            <div className="boxValueTotal">
+                                                <h1 className="valueTotal">
                                                     $ {total}
                                                 </h1>
                                             </div>
