@@ -97,7 +97,7 @@ const CashRegister = () => {
                         <div className="row">
                             <div className="col">
                                 <h3 className="page-title">
-                                    Caja de ventas st {isSubscribed} {register}
+                                    Caja de ventas {isSubscribed} {register}
                                 </h3>
                             </div>
                         </div>
