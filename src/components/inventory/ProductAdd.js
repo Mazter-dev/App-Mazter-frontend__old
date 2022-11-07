@@ -5,6 +5,7 @@ import { IconRequired } from "./layouts/IconRequired";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { InputRequired } from "./layouts/InputRequired";
 const ProductAdd = () => {
     const config = {
         headers: {
@@ -92,22 +93,10 @@ const ProductAdd = () => {
                                                                 }
                                                             )}
                                                         />
-
-                                                        {errors.name ? (
-                                                            <i className="text-primary">
-                                                                &nbsp;
-                                                                {errors.name
-                                                                    ?.type ===
-                                                                    "required" &&
-                                                                    "El nombre es requerido"}
-                                                                {errors.name
-                                                                    ?.type ===
-                                                                    "maxLength" &&
-                                                                    "El nombre esta muy extenso"}
-                                                            </i>
-                                                        ) : (
-                                                            false
-                                                        )}
+                                                        <InputRequired
+                                                            error={errors}
+                                                            name="name"
+                                                        />
                                                     </div>
                                                 </div>
 
@@ -170,6 +159,10 @@ const ProductAdd = () => {
                                                                 }
                                                             )}
                                                         />
+                                                        <InputRequired
+                                                            error={errors}
+                                                            name="price"
+                                                        />
                                                     </div>
                                                 </div>
                                                 <div className="form-group row">
@@ -188,6 +181,10 @@ const ProductAdd = () => {
                                                                     required: true,
                                                                 }
                                                             )}
+                                                        />
+                                                        <InputRequired
+                                                            error={errors}
+                                                            name="stock"
                                                         />
                                                     </div>
                                                 </div>
