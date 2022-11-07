@@ -16,8 +16,7 @@ const MainRouter = () => {
                     path="/auth/*"
                     element={
                         <PublicRoutes>
-                            {" "}
-                            <AuthRoutes />{" "}
+                            <AuthRoutes />
                         </PublicRoutes>
                     }
                 />
@@ -25,8 +24,7 @@ const MainRouter = () => {
                     path="/app/*"
                     element={
                         <PrivateRoutes>
-                            {" "}
-                            <AppRoutes />{" "}
+                            <AppRoutes />
                         </PrivateRoutes>
                     }
                 />
