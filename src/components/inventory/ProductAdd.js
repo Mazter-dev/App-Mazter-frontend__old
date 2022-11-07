@@ -7,7 +7,9 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 const ProductAdd = () => {
     const config = {
-        headers: { Authorization: `Bearer ${sessionStorage.getItem("bearer")}` },
+        headers: {
+            Authorization: `Bearer ${sessionStorage.getItem("bearer")}`,
+        },
     };
     const {
         register,
@@ -19,9 +21,8 @@ const ProductAdd = () => {
     const onSubmit = (data) => {
         const url = process.env.REACT_APP_URL_API + "products/save";
         axios
-            .post(url, data, config,)
+            .post(url, data, config)
             .then(function () {
-
                 Swal.fire({
                     title: "Producto registrado",
                     text: "¿Desea agregar otro producto?",
@@ -91,17 +92,22 @@ const ProductAdd = () => {
                                                                 }
                                                             )}
                                                         />
-                                                        <i className="text-primary">
-                                                            &nbsp;
-                                                            {errors.name
-                                                                ?.type ===
-                                                                "required" &&
-                                                                "El nombre es requerido"}
-                                                            {errors.name
-                                                                ?.type ===
-                                                                "maxLength" &&
-                                                                "El nombre esta muy extenso"}
-                                                        </i>
+
+                                                        {errors.name ? (
+                                                            <i className="text-primary">
+                                                                &nbsp;
+                                                                {errors.name
+                                                                    ?.type ===
+                                                                    "required" &&
+                                                                    "El nombre es requerido"}
+                                                                {errors.name
+                                                                    ?.type ===
+                                                                    "maxLength" &&
+                                                                    "El nombre esta muy extenso"}
+                                                            </i>
+                                                        ) : (
+                                                            false
+                                                        )}
                                                     </div>
                                                 </div>
 
@@ -168,7 +174,7 @@ const ProductAdd = () => {
                                                 </div>
                                                 <div className="form-group row">
                                                     <label className="col-lg-3 col-form-label">
-                                                        <IconRequired />{" "}
+                                                        <IconRequired />
                                                         Unidades disonibles
                                                     </label>
                                                     <div className="col-lg-9">
