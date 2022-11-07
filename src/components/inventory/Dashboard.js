@@ -1,10 +1,32 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Master from "./layouts/Master";
 
 const Dashboard = () => {
-    
-    const user_name = localStorage.getItem("user_name");
-    
+    const navigate = useNavigate();
+    const [userName, setUserName] = useState('...');
+
+    useEffect(() => {
+        function getUser() {
+            const bearer = sessionStorage.getItem("bearer");
+            const config = {
+                headers: { Authorization: `Bearer ${bearer}` },
+            };
+            const url = process.env.REACT_APP_URL_API + "getUser";
+            axios
+                .get(url,config)
+                .then(function (r) {
+                    setUserName(r.data.comercial_name)
+                })
+                .catch(function () {
+                    sessionStorage.clear();
+                    navigate("/auth/login");
+                });
+        }
+        getUser();
+    }, [navigate]);
+
     return (
         <Master>
             <div className="page-wrapper">
@@ -12,7 +34,9 @@ const Dashboard = () => {
                     <div className="page-header">
                         <div className="row">
                             <div className="col-12">
-                                <h3 className="page-title">Bienvenido {user_name}!</h3>
+                                <h3 className="page-title">
+                                    Bienvenido {userName}!
+                                </h3>
                             </div>
                         </div>
                     </div>

@@ -22,7 +22,7 @@ const Menu = () => {
                         <span>Menú</span>
                     </li>
                     <ul>
-                        {/* <li
+                        <li
                             className={`${
                                 location.pathname ===
                                 prefix + privateRoutes.DASHBOARD
@@ -34,7 +34,7 @@ const Menu = () => {
                                 <i className="fas fa-columns"></i>{" "}
                                 <span>Dashboard</span>
                             </Link>
-                        </li> */}
+                        </li>
                         <li
                             className={`${
                                 location.pathname ===

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const LocalStorage = () => {
@@ -37,15 +37,15 @@ const LocalStorage = () => {
         .get(url, data,config)
         .then(function (r) {
         })
-        .catch(function (r) {
-            if (r.response.data.message === "Unauthenticated.") {
-                sessionStorage.clear();
-                navigate("/auth/login");
-            }
+        .catch(function () {
+            sessionStorage.clear();
+            navigate("/auth/login");
         });
 
 
-
+        useEffect(() => {
+            
+        }, []);
 
 
 

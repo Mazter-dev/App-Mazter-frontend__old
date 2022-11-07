@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import Home from "../components/Home";
+import Dashboard from "../components/inventory/Dashboard";
 import NotFoundComponent from "../components/NotFoundComponent";
 import AppRoutes from "./AppRoutes";
 import AuthRoutes from "./AuthRoutes";
@@ -11,7 +11,7 @@ const MainRouter = () => {
     return (
         <BrowserRouter>
             <NotFoundComponent>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Dashboard />} />
                 <Route
                     path="/auth/*"
                     element={

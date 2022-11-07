@@ -23,24 +23,19 @@ const ProductList = () => {
 
         function getProducts() {
             const url = process.env.REACT_APP_URL_API + "products/get";
-            const data = {
-                user_id: user_id,
-            };
             axios
-                .post(url, data, config)
+                .get(url, config)
                 .then(function (r) {
                     setListProducts(r.data);
                 })
                 .catch(function (r) {
-                    if (r.response.data.message === "Unauthenticated.") {
-                        sessionStorage.clear();
-                        navigate("/auth/login");
-                    }
+                    sessionStorage.clear();
+                    navigate("/auth/login");
                 });
         }
 
         getProducts();
-    }, [navigate,user_id]);
+    }, [navigate, user_id]);
 
     function toggleFilters() {
         statusHideFilter(false);
