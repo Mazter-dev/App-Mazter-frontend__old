@@ -1,0 +1,6 @@
+InputRequired:
+$(`input[name='${props.name}']`).keyup(function() {
+    setShowAlert(false)
+});
+remains in false
+

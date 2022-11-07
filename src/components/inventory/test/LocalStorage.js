@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const LocalStorage = () => {
-
     // Create variable from local storage
     const textForStorage = "LocalStorage";
     // setter
@@ -14,41 +13,37 @@ const LocalStorage = () => {
     localStorage.removeItem("myKey");
     // remove all
     localStorage.clear();
-    
-    
-    // Session Storage
-    sessionStorage.setItem('myKey', textForStorage)
-    sessionStorage.getItem('myKey')
-    sessionStorage.removeItem('myKey')
-    sessionStorage.clear();
 
+    // Session Storage
+    sessionStorage.setItem("myKey", textForStorage);
+    sessionStorage.getItem("myKey");
+    sessionStorage.removeItem("myKey");
+    sessionStorage.clear();
 
     const navigate = useNavigate();
     const config = {
-        headers: { Authorization: `Bearer ${sessionStorage.getItem("bearer")}` },
+        headers: {
+            Authorization: `Bearer ${sessionStorage.getItem("bearer")}`,
+        },
     };
     const url = process.env.REACT_APP_URL_API + "products/get";
     axios
         .get(url, config)
-        .then(function (r) {
-        })
+        .then(function (r) {})
         .catch(function () {
             sessionStorage.clear();
             navigate("/auth/login");
         });
 
+    useEffect(() => {}, []);
 
-        useEffect(() => {
-            
-        }, []);
-
-
-
+    function changeAmount() {}
 
     return (
         <div>
             LocalStorage
             <h3>{textFromStorage}</h3>
+            <button onClick={() => changeAmount("data")}></button>
         </div>
     );
 };

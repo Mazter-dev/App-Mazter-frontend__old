@@ -3,10 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Master from "./layouts/Master";
 import Swal from "sweetalert2";
-import { Button, Modal } from "react-bootstrap";
-import { IconRequired } from "./layouts/IconRequired";
-import { InputRequired } from "./layouts/InputRequired";
-import { useForm } from "react-hook-form";
+import { ModalProductUpdate } from "./modals/ModalProductUpdate";
 
 const ProductList = () => {
     const navigate = useNavigate();
@@ -14,13 +11,10 @@ const ProductList = () => {
     const [show, setShow] = useState(false);
     const [hideFilter, statusHideFilter] = useState(true);
     const [showModal, setShowModal] = useState(false);
-    const {
-        register,
-        formState: { errors },
-        handleSubmit,
-    } = useForm();
 
-    const handleShowModal = () => setShowModal(!showModal);
+    function handleShowModal(product_id) {
+        setShowModal(!showModal);
+    }
 
     const config = {
         headers: {
@@ -50,10 +44,6 @@ const ProductList = () => {
 
         getProducts();
     }, [navigate]);
-
-    const sendForm = (data) => {
-        alert();
-    };
 
     function toggleFilters() {
         statusHideFilter(false);
@@ -309,9 +299,11 @@ const ProductList = () => {
 
                                                             <td>
                                                                 <Link
-                                                                    onClick={
-                                                                        handleShowModal
-                                                                    }
+                                                                    onClick={() => {
+                                                                        handleShowModal(
+                                                                            i.product_id
+                                                                        );
+                                                                    }}
                                                                     href="edit-ratingstype.html"
                                                                     className="table-action-btn btn btn-sm bg-success-light"
                                                                 >
@@ -398,90 +390,11 @@ const ProductList = () => {
                     </div>
                 </div>
             </div>
-            <Modal show={showModal} centered size="lg">
-                <Modal.Header>
-                    <Modal.Title>Editar producto</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <form autoComplete="off" onSubmit={handleSubmit(sendForm)}>
-                        <div className="form-group">
-                            <label>
-                                <IconRequired /> Nombre
-                            </label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                
-                                {...register("name", {
-                                    required: true,
-                                    maxLength: 15,
-                                })}
-                            />
-                            <InputRequired error={errors} name="name" />
-                            {/* {errors.name ? (
-                                <i className="text-primary">
-                                    &nbsp;
-                                    {errors.name?.type === "required" &&
-                                        "El nombre es requerido"}
-                                    {errors.name?.type === "maxLength" &&
-                                        "El nombre esta muy extenso"}
-                                </i>
-                            ) : (
-                                false
-                            )} */}
-                        </div>
-                        <div className="form-group">
-                            <label>
-                                <IconRequired /> Costo
-                            </label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                {...register("price", {
-                                    required: true,
-                                })}
-                            />
-                           <InputRequired error={errors} name="price" />
-                        </div>
-
-                        <div className="form-group">
-                            <label>
-                                <IconRequired /> Unidades disonibles
-                            </label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                {...register(
-                                    "stock",
-                                    {
-                                        required: true,
-                                    }
-                                )}
-                            />
-                            <InputRequired error={errors} name="stock" />
-                        </div>
-                        <div className="form-group">
-                            <label>Código de barras</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                
-                            />
-                        </div>
-                        <div className="modal-footer">
-                            <button type="submit" className="btn btn-primary">
-                                Actualizar
-                            </button>
-                            <Button
-                                onClick={handleShowModal}
-                                variant="secondary"
-                            >
-                                Close Modal
-                            </Button>
-                        </div>
-                    </form>
-                </Modal.Body>
-            </Modal>
+            {showModal ? (
+                <ModalProductUpdate showModal={showModal} setShowModal={setShowModal} />
+            ) : (
+                false
+            )}
         </Master>
     );
 };
