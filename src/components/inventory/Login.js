@@ -7,22 +7,24 @@ const Login = () => {
     const { register, handleSubmit } = useForm();
     const [msgErrorLogin, setMsgErrorLogin] = useState("");
     const navigate = useNavigate();
-
+    const config = {
+        headers: { "Access-Control-Allow-Origin": "*" },
+    };
     function login(data) {
         axios
-            .post(url, data)
+            .post(url, data, config)
             .then(function (r) {
                 sessionStorage.setItem("bearer", r.data.token);
-                routeChange()
+                routeChange();
             })
             .catch(function () {
                 setMsgErrorLogin("Datos incorrectos intente nuevamente");
             });
     }
-    const routeChange = () =>{ 
-        let path = `/app/dashboard`; 
+    const routeChange = () => {
+        let path = `/app/dashboard`;
         navigate(path);
-      }
+    };
     return (
         <div>
             <div className="main-wrapper">
@@ -43,6 +45,7 @@ const Login = () => {
                                 </div>
                                 <div className="login-header">
                                     <h3>
+                                        {process.env.REACT_APP_URL_API}
                                         Login <span>Truelysell</span>
                                     </h3>
                                     <p className="text-muted">
@@ -101,7 +104,6 @@ const Login = () => {
 
                                 <div className="social-login">
                                     <span>Login with</span>
-                                 
                                 </div>
 
                                 <div className="text-center dont-have">

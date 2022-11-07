@@ -24,6 +24,7 @@ const LocalStorage = () => {
     const config = {
         headers: {
             Authorization: `Bearer ${sessionStorage.getItem("bearer")}`,
+            "Access-Control-Allow-Origin": "*" ,
         },
     };
     const url = process.env.REACT_APP_URL_API + "products/get";
