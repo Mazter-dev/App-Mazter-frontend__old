@@ -4,7 +4,7 @@ export function getBearer() {
 }
 export function urlApi(url) {
     // return process.env.REACT_APP_URL_API + url;
-    return 'https://app-mazter-backend-production.up.railway.app/';
+    return 'https://api.nelsondjcr.com/';
 }
 export function configApi() {
     var config = {};
@@ -13,7 +13,7 @@ export function configApi() {
             headers: {
                 Authorization: `Bearer ${sessionStorage.getItem("bearer")}`,
                 "Access-Control-Allow-Headers" : "Content-Type",
-                "Access-Control-Allow-Origin": "https://app-mazter-backend-production.up.railway.app/",
+                "Access-Control-Allow-Origin": "https://api.nelsondjcr.com",
                 "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
             },
         };
