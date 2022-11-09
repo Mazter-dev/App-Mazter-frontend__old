@@ -4,7 +4,7 @@ export function getBearer() {
 }
 export function urlApi(url) {
     // return process.env.REACT_APP_URL_API + url;
-    return 'https://api.nelsondjcr.com/'+ url;
+    return 'https://api.nelsondjcr.com/api/v1/'+ url;
 }
 export function configApi() {
     var config = {};
