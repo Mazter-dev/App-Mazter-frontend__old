@@ -12,7 +12,9 @@ export function configApi() {
         config = {
             headers: {
                 Authorization: `Bearer ${sessionStorage.getItem("bearer")}`,
-                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers" : "Content-Type",
+                "Access-Control-Allow-Origin": "https://app-mazter-backend-production.up.railway.app/",
+                "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
             },
         };
     } else {
