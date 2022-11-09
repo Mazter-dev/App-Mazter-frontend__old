@@ -18,11 +18,22 @@ export const InputRequired = (props) => {
         // console.log(props.name);
         if (json) {
             if (json.hasOwnProperty(props.name)) {
-                setShowAlert(true)
+                var type = json[props.name]['type'];
+                if (type === 'required') {
+                    setMsg(`El ${nameInput} es requerido`);
+                }
+                else if(type === 'maxLength'){
+                    setMsg(`El ${nameInput} es muy extenso`);
+                }
+
+
+                // json[`${props.name}`]
+
+                // setShowAlert(true)
                 // var name = 'amount'
                 // var json = props.error + `.${name}`
                 // console.log(json);
-                setMsg(`El ${nameInput} es requerido`);
+                
             }
         }
 

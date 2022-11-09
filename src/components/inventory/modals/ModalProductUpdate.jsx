@@ -49,7 +49,7 @@ export const ModalProductUpdate = (props,setShowModal) => {
                                 required: true,
                             })}
                         />
-                        <InputRequired error={errors} name="price" />
+                        {/* <InputRequired error={errors} name="price" /> */}
                     </div>
 
                     <div className="form-group">
@@ -63,7 +63,7 @@ export const ModalProductUpdate = (props,setShowModal) => {
                                 required: true,
                             })}
                         />
-                        <InputRequired error={errors} name="stock" />
+                        {/* <InputRequired error={errors} name="stock" /> */}
                     </div>
                     <div className="form-group">
                         <label>Código de barras</label>

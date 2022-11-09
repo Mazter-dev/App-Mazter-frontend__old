@@ -3,7 +3,8 @@ export function getBearer() {
     return sessionStorage.getItem("bearer");
 }
 export function urlApi(url) {
-    return process.env.REACT_APP_URL_API + url;
+    // return process.env.REACT_APP_URL_API + url;
+    return 'https://app-mazter-backend-production.up.railway.app/';
 }
 export function configApi() {
     var config = {};
