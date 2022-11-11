@@ -7,7 +7,7 @@ import $ from "jquery";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import TableCashRegister from "./TableCashRegister";
-import { configApi, getBearer, urlApi } from "../../helpers/helper";
+import { configApi,  urlApi } from "../../helpers/helper";
 const CashRegister = () => {
     const [options, setOptions] = useState({});
     const [isSubscribed, setIsSubscribed] = useState(false);
@@ -15,7 +15,7 @@ const CashRegister = () => {
     const [total, setTotal] = useState(0);
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate();
-    const config = {
+    const configxxx = {
         headers: { Authorization: `Bearer ${sessionStorage.getItem("bearer")}` },
     };
     // console.log(getBearer());
@@ -65,14 +65,14 @@ const CashRegister = () => {
         };
 
         axios
-            .post(urlApi('products/getProductsSelect'), data, configApi())
+            .post(urlApi('registerProductShoppingCart'), data, configApi())
             .then(function (r) {
                 setTabs(r.data.cart);
                 setTotal(r.data.total);
             })
             .catch(function () {
-                // sessionStorage.clear();
-                // navigate("/auth/login");
+                sessionStorage.clear();
+                navigate("/auth/login");
             });
     }
 
@@ -191,7 +191,6 @@ const CashRegister = () => {
                                                     <TableCashRegister
                                                         setTotal={setTotal}
                                                         setTabs={setTabs}
-                                                        config={config}
                                                         items={
                                                             number.get_list_products
                                                         }
