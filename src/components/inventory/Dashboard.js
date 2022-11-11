@@ -17,7 +17,7 @@ const Dashboard = () => {
                     setUserName(r.data.comercial_name)
                 })
                 .catch(function () {
-                    sessionStorage.clear();
+                    localStorage.clear();
                     navigate("/auth/login");
                 });
         }

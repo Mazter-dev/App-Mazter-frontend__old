@@ -14,7 +14,7 @@ const Login = () => {
         axios
             .post(urlApi('login'), data, configApi())
             .then(function (r) {
-                sessionStorage.setItem("bearer", r.data.token);
+                localStorage.setItem("bearer", r.data.token);
                 routeChange();
             })
             .catch(function () {

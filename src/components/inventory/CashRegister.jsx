@@ -23,11 +23,9 @@ const CashRegister = () => {
         const data = {
             cart: 1,
         };
-        const config = {
-            headers: { Authorization: `Bearer ${sessionStorage.getItem("bearer")}` },
-        };
+   
         axios
-            .post(urlApi('getProductShoppingCart'), data, config)
+            .post(urlApi('getProductShoppingCart'), data, configApi())
             .then(function (r) {
                 setTabs(r.data.cart);
                 setTotal(r.data.total);

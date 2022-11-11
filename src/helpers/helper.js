@@ -1,17 +1,17 @@
 import $ from "jquery";
 export function getBearer() {
-    return sessionStorage.getItem("bearer");
+    return localStorage.getItem("bearer");
 }
 export function urlApi(url) {
-    // return process.env.REACT_APP_URL_API + url;
-    return 'https://api.nelsondjcr.com/api/v1/'+ url;
+    return 'http://mazter-backend.develop/api/v1/'+ url;
+    // return 'https://api.nelsondjcr.com/api/v1/'+ url;
 }
 export function configApi() {
     var config = {};
-    if (sessionStorage.getItem("bearer")) {
+    if (localStorage.getItem("bearer")) {
         config = {
             headers: {
-                Authorization: `Bearer ${sessionStorage.getItem("bearer")}`,
+                Authorization: `Bearer ${localStorage.getItem("bearer")}`,
                 "Access-Control-Allow-Headers" : "Content-Type",
                 "Access-Control-Allow-Origin": "https://api.nelsondjcr.com",
                 "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
