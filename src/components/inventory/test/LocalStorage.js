@@ -20,9 +20,12 @@ const LocalStorage = () => {
     sessionStorage.getItem("myKey");
     sessionStorage.removeItem("myKey");
     sessionStorage.clear();
+    const data = {
+        cart: 'key',
+    };
     const navigate = useNavigate();
     axios
-        .get(urlApi('products/get'), configApi())
+        .get(urlApi('products/get'),data, configApi())
         .then(function (r) {})
         .catch(function () {
             sessionStorage.clear();

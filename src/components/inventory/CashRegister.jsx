@@ -15,9 +15,6 @@ const CashRegister = () => {
     const [total, setTotal] = useState(0);
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate();
-    const configxxx = {
-        headers: { Authorization: `Bearer ${sessionStorage.getItem("bearer")}` },
-    };
     // console.log(getBearer());
     useEffect(() => {
         const data = {
@@ -31,8 +28,8 @@ const CashRegister = () => {
                 setTotal(r.data.total);
             })
             .catch(function () {
-                sessionStorage.clear();
-                navigate("/auth/login");
+                // sessionStorage.clear();
+                // navigate("/auth/login");
             });
     }, [navigate]);
 

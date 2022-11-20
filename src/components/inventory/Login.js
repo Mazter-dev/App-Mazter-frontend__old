@@ -4,12 +4,11 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { configApi, urlApi } from "../../helpers/helper";
 const Login = () => {
+    
     const { register, handleSubmit } = useForm();
     const [msgErrorLogin, setMsgErrorLogin] = useState("");
     const navigate = useNavigate();
-    // const config = {
-    //     headers: { "Access-Control-Allow-Origin": "*" },
-    // };
+ 
     function login(data) {
         axios
             .post(urlApi('login'), data, configApi())

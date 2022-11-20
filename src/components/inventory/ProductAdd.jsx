@@ -34,9 +34,18 @@ const ProductAdd = () => {
                     }
                 });
             })
-            .catch(function () {
-                sessionStorage.clear();
-                navigate("/auth/login");
+            .catch(function (r) {
+                if (r.response.status === 406) {
+                    Swal.fire({
+                        title: r.response.data,
+                        text: "",
+                        icon: "warning",
+                        confirmButtonText: "Aceptar",
+                    })
+                }else{
+                    sessionStorage.clear();
+                    navigate("/auth/login");
+                }
             });
     };
 
@@ -81,7 +90,7 @@ const ProductAdd = () => {
                                                             type="text"
                                                             className="form-control"
                                                             {...register(
-                                                                "name",
+                                                                "product_name",
                                                                 {
                                                                     required: true,
                                                                     maxLength: 15,

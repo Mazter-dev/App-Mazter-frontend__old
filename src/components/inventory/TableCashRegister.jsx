@@ -34,7 +34,7 @@ const TableCashRegister = (props) => {
                     {props.items.map((item, key) => (
                         <tr key={key}>
                             <th>{key + 1}</th>
-                            <th>{item.name}</th>
+                            <th>{item.product_name}</th>
                             <th>
                                 <div
                                     onClick={() =>

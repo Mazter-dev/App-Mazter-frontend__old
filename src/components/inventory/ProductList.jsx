@@ -12,16 +12,12 @@ const ProductList = () => {
     const [show, setShow] = useState(false);
     const [hideFilter, statusHideFilter] = useState(true);
     const [showModal, setShowModal] = useState(false);
+    const [productId, setProductId] = useState(0);
 
     function handleShowModal(product_id) {
+        setProductId(product_id);
         setShowModal(!showModal);
     }
-
-    const config = {
-        headers: {
-            Authorization: `Bearer ${sessionStorage.getItem("bearer")}`,
-        },
-    };
 
     useEffect(() => {
         function getProducts() {
@@ -279,7 +275,7 @@ const ProductList = () => {
                                                             <td>
                                                                 {i.product_id}
                                                             </td>
-                                                            <td>{i.name}</td>
+                                                            <td>{i.product_name}</td>
                                                             <td>$ {i.price}</td>
                                                             <td>{i.stock}</td>
                                                             <td>{i.sales}</td>
@@ -383,7 +379,7 @@ const ProductList = () => {
                 </div>
             </div>
             {showModal ? (
-                <ModalProductUpdate showModal={showModal} setShowModal={setShowModal} />
+                <ModalProductUpdate showModal={showModal} productId={productId} setShowModal={setShowModal} />
             ) : (
                 false
             )}
