@@ -1,8 +1,7 @@
 import React from "react";
-import { privateRoutes } from "../../../helpers/routes";
+import { privateRoutes } from "../../../../helpers/routes";
 import { Link, useLocation } from "react-router-dom";
-const Menu = () => {
-    
+const MenuStoreManager = (props) => {
     const prefix = "/app/";
     let location = useLocation();
     return (
@@ -19,7 +18,7 @@ const Menu = () => {
             <div className="sidebar-inner slimscroll">
                 <div id="sidebar-menu" className="sidebar-menu">
                     <li className="menu-title">
-                        <span>Menú</span>
+                        <span>Menú Manager</span>
                     </li>
                     <ul>
                         <li
@@ -31,34 +30,41 @@ const Menu = () => {
                             }`}
                         >
                             <Link to={prefix + privateRoutes.DASHBOARD}>
-                                <i className="fas fa-columns"></i>{" "}
+                                <i className="fas fa-columns"></i>
                                 <span>Dashboard</span>
                             </Link>
                         </li>
-                        <li
-                            className={`${
-                                location.pathname ===
-                                prefix + privateRoutes.CASHREGISTER
-                                    ? "active"
-                                    : false
-                            }`}
-                        >
-                            <Link to={prefix + privateRoutes.CASHREGISTER}>
-                                <i className="fas fa-shopping-cart"></i>
-                                <span>Caja</span>
-                            </Link>
-                        </li>
+                        {/* {role_id === 1 ? (
+                            <></>
+                        ) : (
+                            <> */}
+                                {/* <li
+                                    className={`${
+                                        location.pathname ===
+                                        prefix + privateRoutes.CASHREGISTER
+                                            ? "active"
+                                            : false
+                                    }`}
+                                >
+                                    <Link
+                                        to={prefix + privateRoutes.CASHREGISTER}
+                                    >
+                                        <i className="fas fa-shopping-cart"></i>
+                                        <span>Caja</span>
+                                    </Link>
+                                </li> */}
+                            {/* </>
+                        )} */}
+
                         <li className="submenu">
-                            <Link >
+                            <Link>
                                 <i className="fas fa-qrcode"></i>
                                 <span>Productos</span>
                                 <span className="menu-arrow"></span>
                             </Link>
                             {/* style="display: none;" */}
                             <ul style={{ display: "block" }}>
-                                <li
-                                   
-                                >
+                                <li>
                                     <Link
                                         className={`${
                                             location.pathname ===
@@ -124,4 +130,4 @@ const Menu = () => {
         </div>
     );
 };
-export default Menu;
+export default MenuStoreManager;

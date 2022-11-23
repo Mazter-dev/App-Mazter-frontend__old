@@ -7,14 +7,7 @@ import "./components/jquery/index.js";
 import MainRouter from "./routing/MainRouter";
 
 function App() {
-    // axios.defaults.headers.common = {
-    //     'Authorization': 'Bearer ' + sessionStorage.getItem("bearer")
-    // };
-    // axios.create({
-    //     headers: {
-    //       Authorization : `Bearer ${sessionStorage.getItem("bearer")}`
-    //       }
-    //     })
+
     return (
         <div>
             <MainRouter />

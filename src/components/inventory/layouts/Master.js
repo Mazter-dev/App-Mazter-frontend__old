@@ -1,23 +1,35 @@
-import React from "react";
-import Menu from "./Menu";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import $ from 'jquery'
+import $ from "jquery";
+// import axios from "axios";
+import { configApi, urlApi } from "../../../helpers/helper";
+import axios from "axios";
+import MenuEmploye from "./Menus/MenuEmploye";
+import MenuStoreManager from "./Menus/MenuStoreManager";
 // import CashRegister from "../product/CashRegister";
 const Master = (props) => {
+    // const [userName, setUserName] = useState('...');
+
+    const [role_id, setRoleId] = useState(3);
+    useEffect(() => {
+        axios.get(urlApi("getUser"), configApi()).then(function (r) {
+            setRoleId(r.data.role_id);
+        });
+    });
     function showMenu() {
-        var $wrapper = $('.main-wrapper');
-        $wrapper.toggleClass('slide-nav');
-        $('.sidebar-overlay').toggleClass('opened');
-        $('html').addClass('menu-opened');
+        var $wrapper = $(".main-wrapper");
+        $wrapper.toggleClass("slide-nav");
+        $(".sidebar-overlay").toggleClass("opened");
+        $("html").addClass("menu-opened");
     }
     $(".page-wrapper,.header").on("click", function () {
-        if ($('.slide-nav') !== null) {
-            var $wrapper = $('.main-wrapper');
-            $wrapper.removeClass('slide-nav');
+        if ($(".slide-nav") !== null) {
+            var $wrapper = $(".main-wrapper");
+            $wrapper.removeClass("slide-nav");
             $(".sidebar-overlay").removeClass("opened");
-            $('html').removeClass('menu-opened');
+            $("html").removeClass("menu-opened");
         }
-	});	
+    });
     return (
         <div className="main-wrapper">
             <div className="header">
@@ -116,7 +128,16 @@ const Master = (props) => {
                     </li>
                 </ul>
             </div>
-            <Menu />
+            {role_id === 1 ? (
+                <>
+                    <MenuStoreManager />
+                </>
+            )  : role_id === 3 ?   (
+                <>
+                    <MenuEmploye />
+                </>
+            ) : null}
+
             {props.children}
         </div>
     );
