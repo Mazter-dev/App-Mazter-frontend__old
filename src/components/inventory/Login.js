@@ -1,18 +1,26 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import UserContext from "../../context/UserContext";
 import { configApi, urlApi } from "../../helpers/helper";
+
 const Login = () => {
-    
     const { register, handleSubmit } = useForm();
     const [msgErrorLogin, setMsgErrorLogin] = useState("");
     const navigate = useNavigate();
- 
+    const userData = useContext(UserContext);
+
     function login(data) {
         axios
-            .post(urlApi('login'), data, configApi())
+            .post(urlApi("login"), data, configApi())
             .then(function (r) {
+                userData.setResponse({
+                    name: r.data.name,
+                    role: r.data.role_id,
+                    auth: true,
+                    bearer: r.data.token,
+                });
                 localStorage.setItem("bearer", r.data.token);
                 routeChange();
             })

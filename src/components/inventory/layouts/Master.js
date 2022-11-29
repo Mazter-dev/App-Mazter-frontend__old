@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, redirect } from "react-router-dom";
 import $ from "jquery";
-// import axios from "axios";
-import { configApi, urlApi } from "../../../helpers/helper";
-import axios from "axios";
-import MenuEmploye from "./Menus/MenuEmploye";
-import MenuStoreManager from "./Menus/MenuStoreManager";
-// import CashRegister from "../product/CashRegister";
-const Master = (props) => {
-    // const [userName, setUserName] = useState('...');
 
-    const [role_id, setRoleId] = useState(3);
-    useEffect(() => {
-        axios.get(urlApi("getUser"), configApi()).then(function (r) {
-            setRoleId(r.data.role_id);
+import MenuStoreManager from "./Menus/MenuStoreManager";
+
+import UserContext from "../../../context/UserContext";
+import MenuEmploye from "./Menus/MenuEmploye";
+const Master = (props) => {
+    const userData = useContext(UserContext);
+    const logout = async () => {
+        userData.setResponse({
+            name: null,
+            role: null,
+            auth: false,
         });
-    });
+        return redirect("/auth/login");
+    };
     function showMenu() {
         var $wrapper = $(".main-wrapper");
         $wrapper.toggleClass("slide-nav");
@@ -49,7 +49,13 @@ const Master = (props) => {
                 <ul className="nav user-menu">
                     <li className="nav-item dropdown noti-dropdown">
                         <Link
-                            href="#"
+                            onClick={logout}
+                            className="dropdown-toggle nav-link"
+                            data-toggle="dropdown"
+                        >
+                            <i className="far fa-user"></i>
+                        </Link>
+                        <Link
                             className="dropdown-toggle nav-link"
                             data-toggle="dropdown"
                         >
@@ -128,15 +134,18 @@ const Master = (props) => {
                     </li>
                 </ul>
             </div>
-            {role_id === 1 ? (
+            {userData.response.role === 2 ? (
                 <>
                     <MenuStoreManager />
                 </>
-            )  : role_id === 3 ?   (
-                <>
-                    <MenuEmploye />
-                </>
-            ) : null}
+            ) : (
+                userData.response.role ===
+                3(
+                    <>
+                        <MenuEmploye />
+                    </>
+                )
+            )}
 
             {props.children}
         </div>

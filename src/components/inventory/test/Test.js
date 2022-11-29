@@ -3,7 +3,6 @@ import { useState } from "react";
 const Test = () => {
     
     const [numero, setNumero] = useState(0);
-    // console.log(numero);
 
     function update(newNumber) {
         setNumero(newNumber);

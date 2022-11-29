@@ -2,7 +2,6 @@ import React from "react";
 import { privateRoutes } from "../../../../helpers/routes";
 import { Link, useLocation } from "react-router-dom";
 const MenuEmploye = (props) => {
-    const role_id = props.role_id;
     const prefix = "/app/";
     let location = useLocation();
     return (

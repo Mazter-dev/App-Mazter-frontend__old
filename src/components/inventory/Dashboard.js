@@ -1,28 +1,9 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { configApi, ip, urlApi } from "../../helpers/helper";
+import React, { useContext } from "react";
+import UserContext from "../../context/UserContext";
 import Master from "./layouts/Master";
 
 const Dashboard = () => {
-    const navigate = useNavigate();
-    const [userName, setUserName] = useState('...');
-    
-    useEffect(() => {
-        
-        function getUser() {
-            axios
-                .get(urlApi('getUser'),configApi())
-                .then(function (r) {
-                    setUserName(r.data.comercial_name)
-                })
-                .catch(function () {
-                    localStorage.clear();
-                    navigate("/auth/login");
-                });
-        }
-        getUser();
-    }, [navigate]);
+    const userData = useContext(UserContext);
 
     return (
         <Master>
@@ -32,7 +13,7 @@ const Dashboard = () => {
                         <div className="row">
                             <div className="col-12">
                                 <h3 className="page-title">
-                                    Bienvenido {userName}! {ip()}
+                                    Bienvenido {userData.response.name}!
                                 </h3>
                             </div>
                         </div>

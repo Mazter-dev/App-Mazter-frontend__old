@@ -1,4 +1,3 @@
-import axios from "axios";
 import $ from "jquery";
 export function getBearer() {
     return localStorage.getItem("bearer");
@@ -27,15 +26,7 @@ export function configApi() {
     }
     return config;
 }
-export function ip() {
-    $.getJSON("https://api.ipify.org?format=json", function (data) {
-        console.log(data);
-    });
-}
+
 export function getUserRole() {
-    axios
-        .get(urlApi("getUser"), configApi())
-        .then(function (r) {
-            console.log('helperxsd',r.data.role_id);
-        })
+
 }

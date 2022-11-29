@@ -1,10 +1,13 @@
-import React from "react";
+
 import { privateRoutes } from "../../../../helpers/routes";
 import { Link, useLocation } from "react-router-dom";
+
 const MenuStoreManager = (props) => {
     const prefix = "/app/";
     let location = useLocation();
+   
     return (
+
         <div className="sidebar" id="sidebar">
             <div className="sidebar-logo">
                 <Link href="index.html">

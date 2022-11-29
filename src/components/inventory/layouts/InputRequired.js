@@ -15,7 +15,6 @@ export const InputRequired = (props) => {
 
     useEffect(() => {
         setJson(props.error)
-        // console.log(props.name);
         if (json) {
             if (json.hasOwnProperty(props.name)) {
                 var type = json[props.name]['type'];
@@ -27,12 +26,6 @@ export const InputRequired = (props) => {
                 }
 
 
-                // json[`${props.name}`]
-
-                // setShowAlert(true)
-                // var name = 'amount'
-                // var json = props.error + `.${name}`
-                // console.log(json);
                 
             }
         }

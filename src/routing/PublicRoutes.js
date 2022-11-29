@@ -1,9 +1,13 @@
-import React from "react";
+import { useContext } from "react";
 import { Navigate } from "react-router-dom";
+import UserContext from "../context/UserContext";
 import { privateRoutes } from "../helpers/routes";
 
 const PublicRoutes = ({ children }) => {
-    return localStorage.getItem("bearer") ? (
+
+    const userData = useContext(UserContext);
+
+    return userData?.response.auth ? (
         <Navigate replace to={`/app/${privateRoutes.DASHBOARD}`} />
     ) : (
         children

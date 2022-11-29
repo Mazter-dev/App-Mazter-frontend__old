@@ -15,7 +15,6 @@ const CashRegister = () => {
     const [total, setTotal] = useState(0);
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate();
-    // console.log(getBearer());
     useEffect(() => {
         const data = {
             cart: 1,
