@@ -1,13 +1,11 @@
-
 import { privateRoutes } from "../../../../helpers/routes";
 import { Link, useLocation } from "react-router-dom";
 
-const MenuStoreManager = (props) => {
+const MenuStoreManager = () => {
     const prefix = "/app/";
     let location = useLocation();
-   
-    return (
 
+    return (
         <div className="sidebar" id="sidebar">
             <div className="sidebar-logo">
                 <Link href="index.html">
@@ -37,27 +35,29 @@ const MenuStoreManager = (props) => {
                                 <span>Dashboard</span>
                             </Link>
                         </li>
-                        {/* {role_id === 1 ? (
-                            <></>
-                        ) : (
-                            <> */}
-                                {/* <li
-                                    className={`${
-                                        location.pathname ===
-                                        prefix + privateRoutes.CASHREGISTER
-                                            ? "active"
-                                            : false
-                                    }`}
-                                >
-                                    <Link
-                                        to={prefix + privateRoutes.CASHREGISTER}
-                                    >
-                                        <i className="fas fa-shopping-cart"></i>
-                                        <span>Caja</span>
-                                    </Link>
-                                </li> */}
-                            {/* </>
-                        )} */}
+
+                        <li
+                            className={`${
+                                location.pathname ===
+                                prefix + privateRoutes.CASHREGISTER
+                                    ? "active"
+                                    : false
+                            }`}
+                        >
+                            <Link to={prefix + privateRoutes.CASHREGISTER}>
+                                <i className="fas fa-shopping-cart"></i>
+                                <span>Caja</span>
+                            </Link>
+                        </li>
+
+                        <li>
+                            <Link>
+                                <i className="fas fa-users"></i>
+                                <span>Empleados</span>
+                            </Link>
+                        </li>
+
+
 
                         <li className="submenu">
                             <Link>

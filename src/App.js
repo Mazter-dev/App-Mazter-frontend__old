@@ -16,7 +16,6 @@ function App() {
         auth: null,
     });
     function get() {
-        
         axios
             .get(urlApi("getUser"), configApi())
             .then(function (r) {
