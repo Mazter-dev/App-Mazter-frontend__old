@@ -17,7 +17,7 @@ const ProductAdd = () => {
 
     const onSubmit = (data) => {
         axios
-            .post(urlApi('products/save'), data, configApi())
+            .post(urlApi("products/save"), data, configApi())
             .then(function () {
                 Swal.fire({
                     title: "Producto registrado",
@@ -41,8 +41,8 @@ const ProductAdd = () => {
                         text: "",
                         icon: "warning",
                         confirmButtonText: "Aceptar",
-                    })
-                }else{
+                    });
+                } else {
                     sessionStorage.clear();
                     navigate("/auth/login");
                 }
@@ -150,7 +150,31 @@ const ProductAdd = () => {
                                                 </div> */}
                                                 <div className="form-group row">
                                                     <label className="col-lg-3 col-form-label">
+                                                        <IconRequired />
+                                                        Precio de compra
+                                                    </label>
+                                                    <div className="col-lg-9">
+                                                        <input
+                                                            id="purshase_price"
+                                                            type="text"
+                                                            className="form-control"
+                                                            {...register(
+                                                                "purshase_price",
+                                                                {
+                                                                    required: true,
+                                                                }
+                                                            )}
+                                                        />
+                                                        <InputRequired
+                                                            error={errors}
+                                                            name="purshase_price"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="form-group row">
+                                                    <label className="col-lg-3 col-form-label">
                                                         <IconRequired /> Costo
+                                                        de venta
                                                     </label>
                                                     <div className="col-lg-9">
                                                         <input
@@ -169,6 +193,7 @@ const ProductAdd = () => {
                                                         />
                                                     </div>
                                                 </div>
+
                                                 <div className="form-group row">
                                                     <label className="col-lg-3 col-form-label">
                                                         <IconRequired />
@@ -192,6 +217,7 @@ const ProductAdd = () => {
                                                         />
                                                     </div>
                                                 </div>
+
                                                 <div className="form-group row">
                                                     <label className="col-lg-3 col-form-label">
                                                         <IconRequired /> Código

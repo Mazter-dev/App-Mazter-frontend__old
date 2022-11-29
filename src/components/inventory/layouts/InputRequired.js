@@ -5,6 +5,7 @@ export const InputRequired = (props) => {
         { name: "name", traduction: "nombre" },
         { name: "price", traduction: "precio" },
         { name: "stock", traduction: "stock" },
+        { name: "purshase_price", traduction: "Precio de compra" },
     ];
     const [json, setJson] = useState();
     
