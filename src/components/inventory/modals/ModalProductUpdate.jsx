@@ -9,6 +9,7 @@ import { InputRequired } from "../layouts/InputRequired";
 
 export const ModalProductUpdate = (props, setShowModal, showModal) => {
     const sendForm = (data) => {
+        console.log(data);
     };
 
     const [name, setName] = useState("");

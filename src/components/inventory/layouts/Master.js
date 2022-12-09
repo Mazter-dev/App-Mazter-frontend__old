@@ -134,20 +134,21 @@ const Master = (props) => {
                     </li>
                 </ul>
             </div>
-            {userData.response.role === 2 ? (
-                <>
-                    <MenuStoreManager />
-                </>
-            ) : (
-                userData.response.role ===
-                3(
-                    <>
-                        <MenuEmploye />
-                    </>
-                )
-            )}
+            <MenuStoreManager />
+             {/* {userData.response.role === 2 ? (
+                 <><MenuStoreManager /></>
+             ) 
+             :
+    
+                 userData.response.role === 3  (
+                     <>
+                         <MenuEmploye />
+                     </>
+                 )
+            
+             } */}
 
-            {props.children}
+             {props.children}
         </div>
     );
 };
