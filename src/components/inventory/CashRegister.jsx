@@ -44,8 +44,8 @@ const CashRegister = () => {
                 setOptions(r.data);
             })
             .catch(function () {
-                sessionStorage.clear();
-                navigate("/auth/login");
+                // sessionStorage.clear();
+                // navigate("/auth/login");
             });
     }
 
@@ -67,8 +67,8 @@ const CashRegister = () => {
                 setTotal(r.data.total);
             })
             .catch(function () {
-                sessionStorage.clear();
-                navigate("/auth/login");
+                // sessionStorage.clear();
+                // navigate("/auth/login");
             });
     }
 
