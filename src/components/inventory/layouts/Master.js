@@ -5,15 +5,22 @@ import $ from "jquery";
 import MenuStoreManager from "./Menus/MenuStoreManager";
 
 import UserContext from "../../../context/UserContext";
-import MenuEmploye from "./Menus/MenuEmploye";
+// import MenuEmploye from "./Menus/MenuEmploye";
+import { configApi, urlApi } from "../../../helpers/helper";
+import axios from "axios";
 const Master = (props) => {
     const userData = useContext(UserContext);
     const logout = async () => {
+
+        axios.get(urlApi("logout"), configApi());
+
         userData.setResponse({
             name: null,
             role: null,
             auth: false,
+            bearer: null,
         });
+
         return redirect("/auth/login");
     };
     function showMenu() {
@@ -135,7 +142,7 @@ const Master = (props) => {
                 </ul>
             </div>
             <MenuStoreManager />
-             {/* {userData.response.role === 2 ? (
+            {/* {userData.response.role === 2 ? (
                  <><MenuStoreManager /></>
              ) 
              :
@@ -148,7 +155,7 @@ const Master = (props) => {
             
              } */}
 
-             {props.children}
+            {props.children}
         </div>
     );
 };
