@@ -23,6 +23,7 @@ const CashRegister = () => {
             .then(function (r) {
                 setCartShowing(r.data.carts[0].shopping_cart_id);
                 setTabs(r.data.carts);
+                setTotal(r.data.total_first_cart);
                 setProductsShowing(r.data.carts[0].get_list_products);
             });
     }, []);
@@ -167,6 +168,7 @@ const CashRegister = () => {
                                             setCartShowing={setCartShowing}
                                             tabs={tabs}
                                             setTabs={setTabs}
+                                            setTotal={setTotal}
                                             productsShowing={productsShowing}
                                             setProductsShowing={
                                                 setProductsShowing

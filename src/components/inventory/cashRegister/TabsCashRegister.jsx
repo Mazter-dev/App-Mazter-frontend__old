@@ -12,7 +12,8 @@ const TabsCashRegister = (props) => {
             )
             .then(function (r) {
                 props.setCartShowing(shopping_cart_id);
-                props.setProductsShowing(r.data);
+                props.setProductsShowing(r.data.data);
+                props.setTotal(r.data.total);
             });
     }
 
@@ -63,6 +64,7 @@ const TabsCashRegister = (props) => {
                     <TableCashRegister
                         productsShowing={props.productsShowing}
                         setProductsShowing={props.setProductsShowing}
+                        setTotal={props.setTotal}
                     />
                 ) : null}
             </div>
