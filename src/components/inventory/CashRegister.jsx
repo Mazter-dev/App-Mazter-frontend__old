@@ -166,6 +166,7 @@ const CashRegister = () => {
                                             cartShowing={cartShowing}
                                             setCartShowing={setCartShowing}
                                             tabs={tabs}
+                                            setTabs={setTabs}
                                             productsShowing={productsShowing}
                                             setProductsShowing={
                                                 setProductsShowing

@@ -16,6 +16,14 @@ const TabsCashRegister = (props) => {
             });
     }
 
+    function addNewCart() {
+        axios.get(urlApi("addNewCart"), configApi()).then(function (r) {
+            props.setCartShowing(r.data.shopping_cart_id);
+            props.setTabs(r.data.carts);
+            props.setProductsShowing(r.data.data);
+        });
+    }
+
     return (
         <>
             {props.tabs
@@ -45,6 +53,11 @@ const TabsCashRegister = (props) => {
                       </>
                   ))
                 : null}
+            <li class="nav-item ">
+                <div className="nav-link" onClick={() => addNewCart()}>
+                    <i class="fas fa-plus-square text-primary"></i>
+                </div>
+            </li>
             <div className="table-responsive mt-4">
                 {props.productsShowing ? (
                     <TableCashRegister
