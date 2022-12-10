@@ -5,8 +5,7 @@ import { configApi, urlApi } from "../../../helpers/helper";
 const TableCashRegister = (props) => {
     const [listProducts, setListProducts] = useState(null);
     useEffect(() => {
-        console.log(props.productsShowing.data);
-        setListProducts(props.productsShowing.data);
+        setListProducts(props.productsShowing);
     }, [props]);
     function changeAmount(product_id, shopping_cart_id, operator) {
         const data = {

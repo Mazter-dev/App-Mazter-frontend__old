@@ -1,6 +1,5 @@
 /* eslint-disable array-callback-return */
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import Master from "./layouts/Master";
 import Select from "react-select";
 import $ from "jquery";
@@ -15,20 +14,31 @@ const CashRegister = () => {
     const [isSubscribed, setIsSubscribed] = useState(false);
     const [total, setTotal] = useState(0);
     const { register, handleSubmit } = useForm();
+    const [tabs, setTabs] = useState(null);
+    const [productsShowing, setProductsShowing] = useState();
+
+    useEffect(() => {
+        axios
+            .post(urlApi("getProductShoppingCart"), {}, configApi())
+            .then(function (r) {
+                setCartShowing(r.data.carts[0].shopping_cart_id);
+                setTabs(r.data.carts);
+                setProductsShowing(r.data.carts[0].get_list_products);
+            });
+    }, []);
 
     const handleChange = (event) => {
         setIsSubscribed((current) => !current);
         getListProducts();
     };
-
     function getListProducts() {
+        console.log("get list products");
         axios
             .get(urlApi("products/getProductsSelect"), configApi())
             .then(function (r) {
                 setOptions(r.data);
             });
     }
-
     function searchByBarCode(value) {
         var filter =
             typeof value == "number" ? value : $("#inputBarcode").val();
@@ -36,14 +46,16 @@ const CashRegister = () => {
         $("#inputBarcode").val("");
         const data = {
             filter: filter,
+            shopping_cart_id: cartShowing,
             typeFilter: typeFilter,
-            cart: 1,
         };
 
         axios
             .post(urlApi("registerProductShoppingCart"), data, configApi())
             .then(function (r) {
                 setTotal(r.data.total);
+                console.log(r.data.carts[0].get_list_products);
+                setProductsShowing(r.data.carts[0].get_list_products);
             })
             .catch(function () {
                 // sessionStorage.clear();
@@ -148,39 +160,17 @@ const CashRegister = () => {
                         <div className="col-md-12">
                             <div className="card">
                                 <div className="card-body">
+                                    <h1>Cart {cartShowing}</h1>
                                     <ul className="nav nav-tabs menu-tabs">
-                                        <TabsCashRegister setCartShowing={setCartShowing} />
-
-                                        {/* {tabs ? (
-                                            tabs.map((number, key) => (
-                                                <div
-                                                    key={key}
-                                                    className="table-responsive"
-                                                >
-                                                    <li className="nav-item active">
-                                                        <div className="nav-link">
-                                                            Caja {key + 1}
-                                                        </div>
-                                                    </li>
-                                                    <TableCashRegister
-                                                        setTotal={setTotal}
-                                                        setTabs={setTabs}
-                                                        items={
-                                                            number.get_list_products
-                                                        }
-                                                        cart={key + 1}
-                                                    />
-                                                </div>
-                                            ))
-                                        ) : (
-                                            <>
-                                                <li className="nav-item active">
-                                                    <Link className="nav-link">
-                                                        Cash
-                                                    </Link>
-                                                </li>
-                                            </>
-                                        )} */}
+                                        <TabsCashRegister
+                                            cartShowing={cartShowing}
+                                            setCartShowing={setCartShowing}
+                                            tabs={tabs}
+                                            productsShowing={productsShowing}
+                                            setProductsShowing={
+                                                setProductsShowing
+                                            }
+                                        />
                                     </ul>
                                 </div>
                             </div>
