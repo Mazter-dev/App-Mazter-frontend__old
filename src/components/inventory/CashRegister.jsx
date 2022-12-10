@@ -6,31 +6,15 @@ import Select from "react-select";
 import $ from "jquery";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import TableCashRegister from "./TableCashRegister";
-import { configApi,  urlApi } from "../../helpers/helper";
+import { configApi, urlApi } from "../../helpers/helper";
+import TabsCashRegister from "./cashRegister/TabsCashRegister";
+
 const CashRegister = () => {
+    const [cartShowing, setCartShowing] = useState();
     const [options, setOptions] = useState({});
     const [isSubscribed, setIsSubscribed] = useState(false);
-    const [tabs, setTabs] = useState(false);
     const [total, setTotal] = useState(0);
     const { register, handleSubmit } = useForm();
-    const navigate = useNavigate();
-    useEffect(() => {
-        const data = {
-            cart: 1,
-        };
-   
-        axios
-            .post(urlApi('getProductShoppingCart'), data, configApi())
-            .then(function (r) {
-                setTabs(r.data.cart);
-                setTotal(r.data.total);
-            })
-            .catch(function () {
-                // sessionStorage.clear();
-                // navigate("/auth/login");
-            });
-    }, [navigate]);
 
     const handleChange = (event) => {
         setIsSubscribed((current) => !current);
@@ -39,13 +23,9 @@ const CashRegister = () => {
 
     function getListProducts() {
         axios
-            .get(urlApi('products/getProductsSelect'), configApi())
+            .get(urlApi("products/getProductsSelect"), configApi())
             .then(function (r) {
                 setOptions(r.data);
-            })
-            .catch(function () {
-                // sessionStorage.clear();
-                // navigate("/auth/login");
             });
     }
 
@@ -61,9 +41,8 @@ const CashRegister = () => {
         };
 
         axios
-            .post(urlApi('registerProductShoppingCart'), data, configApi())
+            .post(urlApi("registerProductShoppingCart"), data, configApi())
             .then(function (r) {
-                setTabs(r.data.cart);
                 setTotal(r.data.total);
             })
             .catch(function () {
@@ -71,11 +50,9 @@ const CashRegister = () => {
                 // navigate("/auth/login");
             });
     }
-
     function findByWords(product_id) {
         searchByBarCode(product_id);
     }
-
     return (
         <Master>
             <div className="page-wrapper">
@@ -146,7 +123,6 @@ const CashRegister = () => {
                                                     className="check"
                                                     type="checkbox"
                                                     onChange={handleChange}
-                                                    
                                                 />
                                                 <label
                                                     htmlFor="type_search"
@@ -173,7 +149,9 @@ const CashRegister = () => {
                             <div className="card">
                                 <div className="card-body">
                                     <ul className="nav nav-tabs menu-tabs">
-                                        {tabs ? (
+                                        <TabsCashRegister setCartShowing={setCartShowing} />
+
+                                        {/* {tabs ? (
                                             tabs.map((number, key) => (
                                                 <div
                                                     key={key}
@@ -202,28 +180,8 @@ const CashRegister = () => {
                                                     </Link>
                                                 </li>
                                             </>
-                                        )}
+                                        )} */}
                                     </ul>
-
-                                    <div className="col-12 mt-5">
-                                        <div className="pull-right">
-                                            <button className="btn btn-primary">
-                                                Finaliza Compra
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div className="row mt-5">
-                                        <div className="col-sm-12 col-md-4">
-                                            <div
-                                                className=""
-                                                id=""
-                                                role="status"
-                                                aria-live="polite"
-                                            >
-                                                Showing 1 to 10 of 10 entries
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
