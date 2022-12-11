@@ -50,7 +50,7 @@ const TableCashRegister = (props) => {
                                                   "-"
                                               )
                                           }
-                                          className="nav-link"
+                                          className="nav-link c-pointer"
                                       >
                                           <i className="fas fa-minus-square text-primary"></i>
                                       </div>
@@ -63,7 +63,7 @@ const TableCashRegister = (props) => {
                                                   "+"
                                               )
                                           }
-                                          className="nav-link"
+                                          className="nav-link c-pointer"
                                       >
                                           <i className="fas fa-plus-square text-primary"></i>
                                       </div>

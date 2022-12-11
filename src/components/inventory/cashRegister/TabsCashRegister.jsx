@@ -107,7 +107,7 @@ const TabsCashRegister = (props) => {
                                   }
                               >
                                   <div
-                                      className="nav-link"
+                                      className="nav-link c-pointer"
                                       onClick={() =>
                                           changeProductsCart(
                                               item.shopping_cart_id
@@ -123,7 +123,7 @@ const TabsCashRegister = (props) => {
                 : null}
             <li class="nav-item">
                 {props.cartShowing ? (
-                    <div className="nav-link" onClick={() => addNewCart()}>
+                    <div className="nav-link c-pointer" onClick={() => addNewCart()}>
                         <i class="fas fa-plus-square text-primary"></i>
                     </div>
                 ) : null}

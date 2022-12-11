@@ -9498,3 +9498,6 @@ a.text-dark:hover {
         border-color: #dee2e6;
     }
 }
+.c-pointer{
+    cursor: pointer;
+}
