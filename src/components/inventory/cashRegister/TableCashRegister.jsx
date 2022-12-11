@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
+import Swal from "sweetalert2";
 import { configApi, urlApi } from "../../../helpers/helper";
 const TableCashRegister = (props) => {
     const [listProducts, setListProducts] = useState(null);
@@ -19,6 +20,36 @@ const TableCashRegister = (props) => {
                 props.setProductsShowing(r.data.carts[0].get_list_products);
                 props.setTotal(r.data.total);
             });
+    }
+    function deleteCart() {
+        Swal.fire({
+            title: "Eliminar registro",
+            text: "",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#FF0080",
+            cancelButtonColor: "#bebebe",
+            confirmButtonText: "Eliminar",
+            cancelButtonText: "cancelar",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios
+                    .post(
+                        urlApi("deleteCart"),
+                        { shopping_cart_id: props.cartShowing },
+                        configApi()
+                    )
+                    .then(function (r) {
+                        console.log(r.data.carts);
+                        props.setTabs(r.data.carts)
+                        props.setCartShowing(r.data.carts[0].shopping_cart_id);
+                        props.setProductsShowing(
+                            r.data.carts[0].get_list_products
+                        );
+                        // props.setTotal(r.data.total);
+                    });
+            }
+        });
     }
 
     return (
@@ -76,7 +107,15 @@ const TableCashRegister = (props) => {
             <ul className="nav nav-tabs menu-tabs"></ul>
             <div className="col-12 mt-5 mb-5">
                 <div className="pull-right">
-                    <button className="btn btn-primary">Finaliza Compra</button>
+                    <button
+                        className="btn btn-warining ml-2 mr-2"
+                        onClick={() => deleteCart()}
+                    >
+                        Cancelar
+                    </button>
+                    <button className="btn btn-primary">
+                        Finalizar Compra
+                    </button>
                 </div>
             </div>
             <br />

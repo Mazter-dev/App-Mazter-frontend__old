@@ -64,7 +64,10 @@ const TabsCashRegister = (props) => {
                     <TableCashRegister
                         productsShowing={props.productsShowing}
                         setProductsShowing={props.setProductsShowing}
+                        setCartShowing={props.setCartShowing}
                         setTotal={props.setTotal}
+                        setTabs={props.setTabs}
+                        cartShowing={props.cartShowing}
                     />
                 ) : null}
             </div>

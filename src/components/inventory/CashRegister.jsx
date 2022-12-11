@@ -55,8 +55,9 @@ const CashRegister = () => {
             .post(urlApi("registerProductShoppingCart"), data, configApi())
             .then(function (r) {
                 setTotal(r.data.total);
-                console.log(r.data.carts[0].get_list_products);
                 setProductsShowing(r.data.carts[0].get_list_products);
+                setCartShowing(r.data.carts[0].shopping_cart_id);
+                setTabs(r.data.carts);
             })
             .catch(function () {
                 // sessionStorage.clear();
@@ -186,3 +187,4 @@ const CashRegister = () => {
 };
 
 export default CashRegister;
+
