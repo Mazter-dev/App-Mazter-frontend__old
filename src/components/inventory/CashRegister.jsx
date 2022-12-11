@@ -7,7 +7,6 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { configApi, urlApi } from "../../helpers/helper";
 import TabsCashRegister from "./cashRegister/TabsCashRegister";
-import Swal from "sweetalert2";
 
 const CashRegister = () => {
     const [cartShowing, setCartShowing] = useState();

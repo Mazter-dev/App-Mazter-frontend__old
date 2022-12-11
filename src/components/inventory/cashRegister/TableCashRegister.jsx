@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import Swal from "sweetalert2";
 import { configApi, urlApi } from "../../../helpers/helper";
 const TableCashRegister = (props) => {
     const [listProducts, setListProducts] = useState(null);
@@ -75,21 +74,6 @@ const TableCashRegister = (props) => {
                         : null}
                 </tbody>
             </table>
-            {/* <ul className="nav nav-tabs menu-tabs"></ul>
-            <div className="col-12 mt-5 mb-5">
-                <div className="pull-right">
-                    <button
-                        className="btn btn-warining ml-2 mr-2"
-                        onClick={() => deleteCart()}
-                    >
-                        Cancelar
-                    </button>
-                    <button className="btn btn-primary">
-                        Finalizar Compra
-                    </button>
-                </div>
-            </div> */}
-            
         </div>
     );
 };
