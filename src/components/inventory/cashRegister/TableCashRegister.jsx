@@ -16,6 +16,7 @@ const TableCashRegister = (props) => {
         axios
             .post(urlApi("changeAmountProductShoppingCart"), data, configApi())
             .then(function (r) {
+                console.log('change Amount',r);
                 props.setProductsShowing(r.data.carts[0].get_list_products);
                 props.setTotal(r.data.total);
             });

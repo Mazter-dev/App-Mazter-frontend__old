@@ -63,10 +63,6 @@ const CashRegister = () => {
                 setProductsShowing(r.data.carts[0].get_list_products);
                 setCartShowing(r.data.carts[0].shopping_cart_id);
                 setTabs(r.data.all_carts);
-            })
-            .catch(function () {
-                // sessionStorage.clear();
-                // navigate("/auth/login");
             });
     }
     function findByWords(product_id) {
@@ -167,7 +163,6 @@ const CashRegister = () => {
                         <div className="col-md-12">
                             <div className="card">
                                 <div className="card-body">
-                                    <h1>Cart {cartShowing}</h1>
                                     <ul className="nav nav-tabs menu-tabs">
                                         <TabsCashRegister
                                             cartShowing={cartShowing}
