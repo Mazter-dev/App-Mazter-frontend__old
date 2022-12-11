@@ -44,12 +44,19 @@ const TabsCashRegister = (props) => {
                         configApi()
                     )
                     .then(function (r) {
+                        if (r.data.carts.length) {
+                            props.setProductsShowing(
+                                r.data.carts[0].get_list_products
+                            );
+                            props.setCartShowing(
+                                r.data.carts[0].shopping_cart_id
+                            );
+                        } else {
+                            props.setProductsShowing(null);
+                            props.setCartShowing(null);
+                        }
                         props.setTabs(r.data.carts);
-                        props.setCartShowing(r.data.carts[0].shopping_cart_id);
-                        props.setProductsShowing(
-                            r.data.carts[0].get_list_products
-                        );
-                        // props.setTotal(r.data.total);
+                        props.setTotal(r.data.total);
                     });
             }
         });

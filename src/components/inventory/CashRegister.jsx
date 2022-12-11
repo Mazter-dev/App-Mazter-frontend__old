@@ -21,19 +21,23 @@ const CashRegister = () => {
         axios
             .post(urlApi("getProductShoppingCart"), {}, configApi())
             .then(function (r) {
-                setCartShowing(r.data.carts[0].shopping_cart_id);
                 setTabs(r.data.carts);
                 setTotal(r.data.total_first_cart);
-                setProductsShowing(r.data.carts[0].get_list_products);
+                if (r.data.carts.length) {
+                    setProductsShowing(r.data.carts[0].get_list_products);
+                    setCartShowing(r.data.carts[0].shopping_cart_id);
+                } else {
+                    setProductsShowing(null);
+                    setCartShowing(null);
+                }
             });
     }, []);
- 
+
     const handleChange = (event) => {
         setIsSubscribed((current) => !current);
         getListProducts();
     };
     function getListProducts() {
-        console.log("get list products");
         axios
             .get(urlApi("products/getProductsSelect"), configApi())
             .then(function (r) {
@@ -54,10 +58,11 @@ const CashRegister = () => {
         axios
             .post(urlApi("registerProductShoppingCart"), data, configApi())
             .then(function (r) {
+                console.log(r);
                 setTotal(r.data.total);
                 setProductsShowing(r.data.carts[0].get_list_products);
                 setCartShowing(r.data.carts[0].shopping_cart_id);
-                setTabs(r.data.carts);
+                setTabs(r.data.all_carts);
             })
             .catch(function () {
                 // sessionStorage.clear();
