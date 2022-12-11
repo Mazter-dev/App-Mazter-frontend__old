@@ -74,7 +74,6 @@ const TabsCashRegister = (props) => {
                         configApi()
                     )
                     .then(function (r) {
-
                         console.log(r);
 
                         props.setTabs(r.data.carts);
@@ -115,10 +114,12 @@ const TabsCashRegister = (props) => {
                       </>
                   ))
                 : null}
-            <li class="nav-item ">
-                <div className="nav-link" onClick={() => addNewCart()}>
-                    <i class="fas fa-plus-square text-primary"></i>
-                </div>
+            <li class="nav-item">
+                {props.cartShowing ? (
+                    <div className="nav-link" onClick={() => addNewCart()}>
+                        <i class="fas fa-plus-square text-primary"></i>
+                    </div>
+                ) : null}
             </li>
             <div className="table-responsive mt-4">
                 {props.productsShowing ? (
@@ -132,22 +133,29 @@ const TabsCashRegister = (props) => {
                     />
                 ) : null}
                 <ul className="nav nav-tabs menu-tabs"></ul>
-                <div className="col-12 mt-5 mb-5">
-                    <div className="pull-right">
-                        <button
-                            className="btn btn-warining ml-2 mr-2"
-                            onClick={() => deleteCart()}
-                        >
-                            Cancelar
-                        </button>
-                        <button
-                            className="btn btn-primary"
-                            onClick={() => checkout()}
-                        >
-                            Finalizar Compra
-                        </button>
+                {props.cartShowing ? (
+                    <div className="col-12 mt-5 mb-5">
+                        <div className="pull-right">
+                            <button
+                                className="btn btn-warining ml-2 mr-2"
+                                onClick={() => deleteCart()}
+                            >
+                                Cancelar
+                            </button>
+                            <button
+                                className="btn btn-primary"
+                                onClick={() => checkout()}
+                            >
+                                Finalizar Compra
+                            </button>
+                        </div>
                     </div>
-                </div>
+                ) : (
+                    <>
+                        <h1 className="text-center">Registrar nueva venta</h1>
+                    </>
+                )}
+
                 <br />
                 <br />
                 <br />
