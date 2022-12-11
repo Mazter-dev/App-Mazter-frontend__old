@@ -21,36 +21,7 @@ const TableCashRegister = (props) => {
                 props.setTotal(r.data.total);
             });
     }
-    function deleteCart() {
-        Swal.fire({
-            title: "Eliminar registro",
-            text: "",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#FF0080",
-            cancelButtonColor: "#bebebe",
-            confirmButtonText: "Eliminar",
-            cancelButtonText: "cancelar",
-        }).then((result) => {
-            if (result.isConfirmed) {
-                axios
-                    .post(
-                        urlApi("deleteCart"),
-                        { shopping_cart_id: props.cartShowing },
-                        configApi()
-                    )
-                    .then(function (r) {
-                        console.log(r.data.carts);
-                        props.setTabs(r.data.carts)
-                        props.setCartShowing(r.data.carts[0].shopping_cart_id);
-                        props.setProductsShowing(
-                            r.data.carts[0].get_list_products
-                        );
-                        // props.setTotal(r.data.total);
-                    });
-            }
-        });
-    }
+    
 
     return (
         <div>
@@ -104,7 +75,7 @@ const TableCashRegister = (props) => {
                         : null}
                 </tbody>
             </table>
-            <ul className="nav nav-tabs menu-tabs"></ul>
+            {/* <ul className="nav nav-tabs menu-tabs"></ul>
             <div className="col-12 mt-5 mb-5">
                 <div className="pull-right">
                     <button
@@ -117,10 +88,8 @@ const TableCashRegister = (props) => {
                         Finalizar Compra
                     </button>
                 </div>
-            </div>
-            <br />
-            <br />
-            <br />
+            </div> */}
+            
         </div>
     );
 };

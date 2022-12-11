@@ -7,6 +7,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { configApi, urlApi } from "../../helpers/helper";
 import TabsCashRegister from "./cashRegister/TabsCashRegister";
+import Swal from "sweetalert2";
 
 const CashRegister = () => {
     const [cartShowing, setCartShowing] = useState();
@@ -27,7 +28,7 @@ const CashRegister = () => {
                 setProductsShowing(r.data.carts[0].get_list_products);
             });
     }, []);
-
+ 
     const handleChange = (event) => {
         setIsSubscribed((current) => !current);
         getListProducts();
@@ -187,4 +188,3 @@ const CashRegister = () => {
 };
 
 export default CashRegister;
-
