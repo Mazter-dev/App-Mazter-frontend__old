@@ -1,4 +1,3 @@
-import $ from "jquery";
 export function getBearer() {
     return localStorage.getItem("bearer");
 }
