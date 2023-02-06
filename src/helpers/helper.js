@@ -3,6 +3,7 @@ export function getBearer() {
 }
 export function urlApi(url) {
     return "http://mazter-backend.develop/api/v1/" + url;
+    //  return "http://mazter-backend.develop/api/v1/" + url;
     // return 'https://api.nelsondjcr.com/api/v1/'+ url;
 }
 export function configApi() {
